@@ -1,5 +1,7 @@
 install:
-  - choco install -y protoc
+  - choco install -y 7zip wget
+  - wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-win32.zip
+  - 7z x protoc-3.5.1-win32.zip
 
 build_script:
   - cd proto
