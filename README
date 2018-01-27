@@ -1,0 +1,5 @@
+# .NET Client for Helm
+
+[Helm](https://helm.sh/) is a package manager for Kubernetes. It allows you to install and use software built for Kubernetes.
+
+This repository contains a C# client for working with Helm.
