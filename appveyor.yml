@@ -1,0 +1,16 @@
+install:
+  - choco install -y protoc
+
+build_script:
+  - cd proto
+  - generate.cmd
+  - cd ..\src
+  - dotnet restore
+  - dotnet build --no-restore -c Release
+  - dotnet pack --no-restore -c Release
+
+test_script:
+  - dotnet test
+
+artifacts:
+  - path: src\Helm\bin\Release\Helm.*.nupkg
