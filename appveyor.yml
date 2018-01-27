@@ -1,13 +1,10 @@
 install:
-  - choco install -y 7zip wget
-  - wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-win32.zip
-  - 7z x protoc-3.5.1-win32.zip
+  - dotnet restore src\Helm.sln
 
 build_script:
   - cd proto
   - generate.cmd
   - cd ..\src
-  - dotnet restore
   - dotnet build --no-restore -c Release
   - dotnet pack --no-restore -c Release
 
