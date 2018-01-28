@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Quamotion</Authors>
+    <Company>Quamotion</Company>
+    <Product>A .NET client for Helm, the package manage for Kubernetes</Product>
+    <Description>Helm contains a .NET client which you can use to interact with Helm, the package manager for Kubernetes. It contains an client-side implementation of HAPI, the gRPC-based Helm API</Description>
+    <Copyright>Copyright (c) 2018 Quamotion bvba</Copyright>
+    <PackageLicenseUrl>https://github.com/qmfrederik/helm/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/qmfrederik/helm/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/qmfrederik/helm/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>helm kubernetes grpc protobuf</PackageTags>
+    <PackageIconUrl>https://helm.sh//assets/images/helm-logo.svg</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
