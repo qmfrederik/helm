@@ -9,7 +9,7 @@ build_script:
   - dotnet pack --no-restore -c Release
 
 test_script:
-  - dotnet test
+  - dotnet test Helm.Tests
 
 artifacts:
   - path: src\Helm\bin\Release\Helm.*.nupkg
