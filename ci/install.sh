@@ -1,5 +1,5 @@
 # Install kubectl
-curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.3/bin/linux/amd64/kubectl
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 
@@ -16,7 +16,7 @@ sudo mv ~/helm/linux-amd64/helm /usr/local/bin/helm
 rm -rf ~/helm
 
 # Create the minikube cluster
-sudo minikube start --vm-driver=none --kubernetes-version=v1.9.3 --extra-config=apiserver.Authorization.Mode=RBAC
+sudo minikube start --vm-driver=none --kubernetes-version=v1.9.0 --extra-config=apiserver.Authorization.Mode=RBAC
 minikube update-context
 
 # Wait for the cluster to be ready
