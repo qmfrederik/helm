@@ -4,4 +4,4 @@ env:
 - CHANGE_MINIKUBE_NONE_USER=true
 
 before_script:
-- minikube/install.sh
+- ci/install.sh
