@@ -19,5 +19,5 @@ $google_deps = "Mgoogle/protobuf/timestamp.proto=github.com/golang/protobuf/ptyp
 
 foreach ($file in $files)
 {
-  & $protoc --plugin=protoc-gen-grpc=$($grpc) --grpc_out=..\src\Helm\Hapi --csharp_out=..\src\Helm\Hapi  -I""$($protocInclude)"" -I. $file
+  & $protoc --plugin=protoc-gen-grpc=$($grpc) --grpc_out=../src/Helm/Hapi --csharp_out=../src/Helm/Hapi  -I""$($protocInclude)"" -I. $file
 }
