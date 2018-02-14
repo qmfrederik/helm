@@ -3,7 +3,7 @@ sudo apt-get install -y curl apt-transport-https libc6-dev
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" | sudo tee /etc/apt/sources.list.d/dotnetdev.list > /dev/null
 sudo apt-get update
-sudo apt-get install -y dotnet-runtime-2.0.5
+sudo apt-get install -y dotnet-sdk-2.1.4
 
 # Install kubectl
 curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
