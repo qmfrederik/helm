@@ -1,7 +1,15 @@
-$protoc = Join-Path $env:USERPROFILE ".nuget\packages\google.protobuf.tools\3.5.1\tools\windows_x64\protoc.exe"
-$protocInclude = Join-Path $env:USERPROFILE ".nuget\packages\google.protobuf.tools\3.5.1\tools\"
-$grpc = Join-Path $env:USERPROFILE ".nuget\packages\grpc.tools\1.9.0-pre2\tools\windows_x64\grpc_csharp_plugin.exe"
+$runtime = "windows_x64"
+$suffix = ".exe"
 
+if ($env:OS -ne "Windows_NT")
+{
+  $runtime = "linux_x64"
+  $suffix = ""
+}
+
+$protoc = Join-Path $env:USERPROFILE ".nuget\packages\google.protobuf.tools\3.5.1\tools\$runtime\protoc$suffix"
+$protocInclude = Join-Path $env:USERPROFILE ".nuget\packages\google.protobuf.tools\3.5.1\tools\"
+$grpc = Join-Path $env:USERPROFILE ".nuget\packages\grpc.tools\1.9.0-pre2\tools\$runtime\grpc_csharp_plugin$suffix"
 
 $files = Get-ChildItem -Filter *.proto -Recurse . | Resolve-Path -Relative
 

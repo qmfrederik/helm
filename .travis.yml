@@ -7,3 +7,11 @@ env:
 
 before_script:
 - ci/install.sh
+
+script:
+- dotnet restore src/Helm.sln
+- cd proto
+- generate.sh
+- cd ../src
+- dotnet build --no-restore -c Release
+- dotnet pack --no-restore -c Release
