@@ -1,0 +1,18 @@
+sudo: required
+
+env:
+  global:
+    - CHANGE_MINIKUBE_NONE_USER=true
+    - MINIKUBE_WANTREPORTERRORPROMPT=false
+    - MINIKUBE_WANTUPDATENOTIFICATION=false
+
+before_script:
+- ci/install.sh
+
+script:
+- dotnet restore src/Helm.sln
+- cd proto
+- ./generate.sh
+- cd ../src
+- dotnet build --no-restore -c Release
+- dotnet pack --no-restore -c Release
