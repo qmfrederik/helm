@@ -12,7 +12,7 @@ before_script:
 script:
 - dotnet restore src/Helm.sln
 - cd proto
-- generate.sh
+- ./generate.sh
 - cd ../src
 - dotnet build --no-restore -c Release
 - dotnet pack --no-restore -c Release
