@@ -12,7 +12,7 @@ sudo mv minikube /usr/local/bin/
 curl -sL https://kubernetes-helm.storage.googleapis.com/helm-v2.8.1-linux-amd64.tar.gz -o helm-v2.8.1-linux-amd64.tar.gz
 mkdir ~/helm
 tar xf helm-v2.8.1-linux-amd64.tar.gz -C ~/helm/
-mv ~/helm/linux-amd64/helm /usr/local/bin/helm
+sudo mv ~/helm/linux-amd64/helm /usr/local/bin/helm
 rm -rf ~/helm
 
 # Create the minikube cluster
