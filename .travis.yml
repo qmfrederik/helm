@@ -18,4 +18,5 @@ script:
 - dotnet build --no-restore -c Release
 - dotnet pack --no-restore -c Release
 - dotnet test Helm.Tests
+- cat $KUBECONFIG
 - dotnet test Helm.IntegrationTests
