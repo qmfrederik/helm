@@ -16,3 +16,5 @@ script:
 - cd ../src
 - dotnet build --no-restore -c Release
 - dotnet pack --no-restore -c Release
+- dotnet test Helm.Tests
+- dotnet test Helm.IntegrationTests
