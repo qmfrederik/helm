@@ -5,6 +5,7 @@ env:
     - CHANGE_MINIKUBE_NONE_USER=true
     - MINIKUBE_WANTREPORTERRORPROMPT=false
     - MINIKUBE_WANTUPDATENOTIFICATION=false
+    - KUBECONFIG=/home/travis/.kube/config
 
 before_script:
 - ci/install.sh
