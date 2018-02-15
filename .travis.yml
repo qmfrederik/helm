@@ -11,6 +11,7 @@ before_script:
 - ci/install.sh
 
 script:
+- sed -i .bak 's/as-user-extra/#as-user-extra/' $KUBECONFIG
 - dotnet restore src/Helm.sln
 - cd proto
 - ./generate.sh
