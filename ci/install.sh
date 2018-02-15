@@ -37,4 +37,4 @@ JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.ty
 
 # Initialize helm, with RBAC permissions
 kubectl create -f ~/ci/helm-rbac.yaml
-helm init --service-account tiller
+helm init --service-account tiller --wait
