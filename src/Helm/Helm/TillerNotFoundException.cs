@@ -7,7 +7,7 @@ namespace Helm.Helm
     public class TillerNotFoundException : Exception
     {
         public TillerNotFoundException()
-            : this("Could not found the Tiller pod")
+            : this("Could not find the Tiller pod in the Kubernetes cluster. Make sure Helm has been installed correctly.")
         {
         }
 
