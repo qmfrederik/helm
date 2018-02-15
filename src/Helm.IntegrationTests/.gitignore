@@ -1,0 +1,4 @@
+# Kubernetes configuration files
+*.crt
+*.key
+*.config

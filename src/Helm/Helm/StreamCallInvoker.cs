@@ -42,7 +42,6 @@ namespace Helm.Helm
             // https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
             // When debugging, be aware of the timeouts!
             // You can get some insights about what's going on by running kubectl logs <tiller> -n kube-system -f
-
             ConnectionConfiguration config =
                new ConnectionConfigurationBuilder(isServer: false)
                .Build();

@@ -5,14 +5,20 @@ env:
     - CHANGE_MINIKUBE_NONE_USER=true
     - MINIKUBE_WANTREPORTERRORPROMPT=false
     - MINIKUBE_WANTUPDATENOTIFICATION=false
+    - KUBECONFIG=/home/travis/.kube/config
 
 before_script:
 - ci/install.sh
+- kubectl cluster-info
 
 script:
+- sed -i.bak 's/as-user-extra/#as-user-extra/' $KUBECONFIG
 - dotnet restore src/Helm.sln
 - cd proto
 - ./generate.sh
 - cd ../src
 - dotnet build --no-restore -c Release
 - dotnet pack --no-restore -c Release
+- dotnet test Helm.Tests
+- cat $KUBECONFIG
+- dotnet test Helm.IntegrationTests

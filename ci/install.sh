@@ -31,10 +31,20 @@ rm -rf ~/helm
 sudo minikube start --vm-driver=none --kubernetes-version=v1.9.0 --extra-config=apiserver.Authorization.Mode=RBAC
 minikube update-context
 
-# Wait for the cluster to be ready
+# Disable the dashboard. We don't use it and it consumes a lot of resources
+minikube addons disable dashboard
+
+# Wait for the cluster nodes to be ready
 JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; \
   until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1; done
 
 # Initialize helm, with RBAC permissions
-kubectl create -f ~/ci/helm-rbac.yaml
+kubectl create -f $TRAVIS_BUILD_DIR/ci/helm-rbac.yaml
 helm init --service-account tiller
+
+# Wait for the Tiller pod to be online. helm init --wait has a timeout of 5 seconds, which is too
+# optimistic for bootstrapping a cluster.
+
+# Wait for the cluster to be ready
+JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; \
+  until kubectl get pods -n kube-system -l app=helm,name=tiller -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do kubectl get pods --all-namespaces; kubectl get pods -n kube-system -l app=helm,name=tiller; sleep 1; done
