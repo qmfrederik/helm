@@ -9,6 +9,7 @@ env:
 
 before_script:
 - ci/install.sh
+- kubectl cluster-info
 - kubectl get pods --all-namespaces
 
 script:
