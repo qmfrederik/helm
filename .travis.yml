@@ -9,8 +9,7 @@ env:
 
 before_script:
 - ci/install.sh
-- kubectl cluster-info
-- kubectl get pods --all-namespaces
+- kubectl cluster-info dump
 
 script:
 - sed -i.bak 's/as-user-extra/#as-user-extra/' $KUBECONFIG

@@ -31,6 +31,9 @@ rm -rf ~/helm
 sudo minikube start --vm-driver=none --kubernetes-version=v1.9.0 --extra-config=apiserver.Authorization.Mode=RBAC
 minikube update-context
 
+# Disable the dashboard. We don't use it and it consumes a lot of resources
+minikube addons disable dashboard
+
 # Wait for the cluster nodes to be ready
 JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; \
   until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1; done
