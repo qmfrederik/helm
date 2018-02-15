@@ -9,7 +9,7 @@ env:
 
 before_script:
 - ci/install.sh
-- kubectl cluster-infox
+- kubectl cluster-info
 
 script:
 - sed -i.bak 's/as-user-extra/#as-user-extra/' $KUBECONFIG
