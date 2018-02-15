@@ -36,7 +36,7 @@ JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.ty
   until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1; done
 
 # Initialize helm, with RBAC permissions
-kubectl create -f ~/ci/helm-rbac.yaml
+kubectl create -f $TRAVIS_BUILD_DIR/ci/helm-rbac.yaml
 helm init --service-account tiller
 
 # Wait for the Tiller pod to be online. helm init --wait has a timeout of 5 seconds, which is too
