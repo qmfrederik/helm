@@ -44,4 +44,4 @@ helm init --service-account tiller
 
 # Wait for the cluster to be ready
 JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; \
-  until kubectl get pods -n kube-system -l app=helm,name=tiller -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do kubectl get pods -n kube-system; kubectl get pods -n kube-system -l app=helm,name=tiller; sleep 1; done
+  until kubectl get pods -n kube-system -l app=helm,name=tiller -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do kubectl get pods --all-namespaces; kubectl get pods -n kube-system -l app=helm,name=tiller; sleep 1; done
