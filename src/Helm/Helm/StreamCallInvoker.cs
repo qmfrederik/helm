@@ -36,7 +36,14 @@ namespace Helm.Helm
 
         public override AsyncServerStreamingCall<TResponse> AsyncServerStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string host, CallOptions options, TRequest request)
         {
-            throw new NotImplementedException();
+            var unaryCall = this.AsyncUnaryCall(method, host, options, request);
+
+            return new AsyncServerStreamingCall<TResponse>(
+                responseStream: new AsyncStreamReader<TResponse>(unaryCall),
+                responseHeadersAsync: unaryCall.ResponseHeadersAsync,
+                getStatusFunc: unaryCall.GetStatus,
+                getTrailersFunc: unaryCall.GetTrailers,
+                disposeAction: unaryCall.Dispose);
         }
 
         public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string host, CallOptions options, TRequest request)
