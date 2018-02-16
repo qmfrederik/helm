@@ -12,7 +12,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace Helm.Charts
 {
-    public class Chart
+    public class ChartPackage
     {
         private readonly Stream stream;
         private readonly Deserializer deserializer = new Deserializer(namingConvention: new CamelCaseNamingConvention(), ignoreUnmatched: true);
@@ -22,7 +22,7 @@ namespace Helm.Charts
         private Hapi.Chart.Metadata metadata;
         private Hapi.Chart.Config values;
 
-        private Chart(Stream stream)
+        private ChartPackage(Stream stream)
         {
             this.stream = stream ?? throw new ArgumentNullException(nameof(stream));
 
@@ -154,9 +154,9 @@ namespace Helm.Charts
             return chart;
         }
 
-        public static Chart Open(Stream stream)
+        public static ChartPackage Open(Stream stream)
         {
-            return new Chart(stream);
+            return new ChartPackage(stream);
         }
 
         private bool IsTemplate(string entryName)

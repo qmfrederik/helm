@@ -4,14 +4,14 @@ using Xunit;
 
 namespace Helm.Tests
 {
-    public class ChartTests
+    public class ChartPackageTests
     {
         [Fact]
         public static void OpenTest()
         {
             using (Stream stream = File.OpenRead("charts/hello-world-0.1.0.tgz"))
             {
-                var chart = Chart.Open(stream);
+                var chart = ChartPackage.Open(stream);
                 Assert.NotNull(chart);
             }
         }
@@ -21,7 +21,7 @@ namespace Helm.Tests
         {
             using (Stream stream = File.OpenRead("charts/hello-world-0.1.0.tgz"))
             {
-                var chart = Chart.Open(stream);
+                var chart = ChartPackage.Open(stream);
                 var metadata = chart.Metadata;
 
                 Assert.NotNull(metadata);
