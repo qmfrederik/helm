@@ -39,6 +39,11 @@ namespace Helm.Tests
                         Assert.Contains(archive.Entries, e => e.Key == "hello-world/templates/ingress.yaml");
                         Assert.Contains(archive.Entries, e => e.Key == "hello-world/templates/NOTES.txt");
                         Assert.Contains(archive.Entries, e => e.Key == "hello-world/templates/service.yaml");
+
+                        foreach(var entry in archive.Entries)
+                        {
+                            Assert.NotEqual(0, entry.Size);
+                        }
                     }
                 }
             }
