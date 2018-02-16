@@ -2,25 +2,26 @@
 using Grpc.Core;
 using Http2;
 using Http2.Hpack;
+using Http2.Internal;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Helm.Helm
 {
     public class StreamCallInvoker : CallInvoker
     {
-        private readonly Stream stream;
-        private readonly CodedInputStream input;
-        private readonly CodedOutputStream output;
+        private readonly Func<Stream> stream;
+        private readonly ILogger logger;
 
-        public StreamCallInvoker(Stream stream)
+        public StreamCallInvoker(Func<Stream> stream, ILogger<StreamCallInvoker> logger = null)
         {
             this.stream = stream ?? throw new ArgumentNullException(nameof(stream));
-            this.input = new CodedInputStream(this.stream);
-            this.output = new CodedOutputStream(this.stream);
+            this.logger = logger;
         }
 
         public override AsyncClientStreamingCall<TRequest, TResponse> AsyncClientStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string host, CallOptions options)
@@ -48,107 +49,126 @@ namespace Helm.Helm
                new ConnectionConfigurationBuilder(isServer: false)
                .Build();
 
-            var streams = this.stream.CreateStreams();
-
-            Connection http2Connection = new Connection(
-                config: config,
-                inputStream: streams.ReadableStream,
-                outputStream: streams.WriteableStream);
-
-            var headers = new Collection<HeaderField>
+            using (Stream networkStream = this.stream())
             {
-                new HeaderField { Name = ":method", Value = "POST" },
-                new HeaderField { Name = ":scheme", Value = "http" },
-                new HeaderField { Name = ":path", Value = method.FullName },
-                new HeaderField { Name = ":authority", Value = "pubsub.googleapis.com" },
-                new HeaderField { Name = "grpc-timeout", Value = "1S" },
-                new HeaderField { Name = "content-type", Value = "application/grpc+proto" }
-            };
+                var streams = networkStream.CreateStreams();
 
-            if (options.Headers != null)
-            {
-                foreach (var header in options.Headers)
+                Connection http2Connection = new Connection(
+                    config: config,
+                    inputStream: streams.ReadableStream,
+                    outputStream: streams.WriteableStream);
+
+                var headers = new Collection<HeaderField>
                 {
-                    headers.Add(new HeaderField()
-                    {
-                        Name = header.Key,
-                        Value = header.Value
-                    });
-                }
-            }
+                    new HeaderField { Name = ":method", Value = "POST" },
+                    new HeaderField { Name = ":scheme", Value = "http" },
+                    new HeaderField { Name = ":path", Value = method.FullName },
+                    new HeaderField { Name = ":authority", Value = "pubsub.googleapis.com" },
+                    new HeaderField { Name = "grpc-timeout", Value = "60S" },
+                    new HeaderField { Name = "content-type", Value = "application/grpc+proto" }
+                };
 
-            var stream = http2Connection.CreateStreamAsync(
-                headers, endOfStream: false).GetAwaiter().GetResult();
-
-            var requestMessage = request as IMessage;
-            byte[] buffer = new byte[4];
-
-            stream.WriteAsync(new ArraySegment<byte>(buffer, 0, 1), endOfStream: false);
-            int size = requestMessage.CalculateSize();
-            buffer = BitConverter.GetBytes(size);
-            Array.Reverse(buffer);
-            stream.WriteAsync(new ArraySegment<byte>(buffer, 0, 4), endOfStream: size == 0);
-
-            if (size > 0)
-            {
-                buffer = requestMessage.ToByteArray();
-                stream.WriteAsync(new ArraySegment<byte>(buffer, 0, buffer.Length), endOfStream: true);
-            }
-
-            // Wait for response headers
-            var responseHeaders = stream.ReadHeadersAsync().GetAwaiter().GetResult();
-
-            var statusCode = responseHeaders.SingleOrDefault(h => h.Name == ":status").Value;
-            var contentType = responseHeaders.SingleOrDefault(h => h.Name == "content-type").Value;
-            var grpcStatusCodeString = responseHeaders.SingleOrDefault(h => h.Name == "grpc-status").Value;
-            var grpcMessage = responseHeaders.SingleOrDefault(h => h.Name == "grpc-message").Value;
-
-            var grpcStatusCode = grpcStatusCodeString == null ? StatusCode.OK : (StatusCode)Enum.Parse(typeof(StatusCode), grpcStatusCodeString);
-
-            // Read response data
-            var response = Activator.CreateInstance<TResponse>();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                buffer = new byte[1024];
-                while (true)
+                if (options.Headers != null)
                 {
-                    var readDataResult = stream.ReadAsync(new ArraySegment<byte>(buffer)).GetAwaiter().GetResult();
-                    ms.Write(buffer, 0, readDataResult.BytesRead);
-
-                    if (readDataResult.EndOfStream)
+                    foreach (var header in options.Headers)
                     {
-                        break;
+                        headers.Add(new HeaderField()
+                        {
+                            Name = header.Key,
+                            Value = header.Value
+                        });
                     }
                 }
 
-                var responseMessage = response as IMessage;
+                var stream = http2Connection.CreateStreamAsync(
+                    headers, endOfStream: false).GetAwaiter().GetResult();
 
-                ms.Position = 0;
-                bool isCompressed = ms.ReadByte() != 0;
-                byte[] lengthBuffer = new byte[4];
-                ms.Read(lengthBuffer, 0, 4);
-                Array.Reverse(lengthBuffer);
-                var length = BitConverter.ToUInt32(lengthBuffer, 0);
+                var requestMessage = request as IMessage;
+                byte[] buffer = new byte[4];
 
-                responseMessage.MergeFrom(ms);
-            }
+                stream.WriteAsync(new ArraySegment<byte>(buffer, 0, 1), endOfStream: false);
+                int size = requestMessage.CalculateSize();
+                buffer = BitConverter.GetBytes(size);
+                Array.Reverse(buffer);
+                stream.WriteAsync(new ArraySegment<byte>(buffer, 0, 4), endOfStream: size == 0);
 
-            var responseTrailers = stream.ReadTrailersAsync().GetAwaiter().GetResult();
-
-            if (grpcStatusCode != StatusCode.OK)
-            {
-                var status = new Status(grpcStatusCode, grpcMessage);
-                var metadata = new Metadata();
-
-                foreach (var trailer in responseTrailers)
+                if (size > 0)
                 {
-                    metadata.Add(new Metadata.Entry(trailer.Name, trailer.Value));
+                    buffer = requestMessage.ToByteArray();
+                    stream.WriteAsync(new ArraySegment<byte>(buffer, 0, buffer.Length), endOfStream: true);
                 }
 
-                throw new Grpc.Core.RpcException(status, metadata);
-            }
+                // Wait for response headers
+                var responseHeaders = stream.ReadHeadersAsync().GetAwaiter().GetResult();
 
-            return new AsyncUnaryCall<TResponse>(Task.FromResult(response), Task.FromResult((Metadata)null), () => Status.DefaultSuccess, null, null);
+                if (this.logger != null)
+                {
+                    foreach (var header in responseHeaders)
+                    {
+                        this.logger.LogTrace("{header.Name} = {header.Value}");
+                    }
+                }
+
+                var statusCode = responseHeaders.SingleOrDefault(h => h.Name == ":status").Value;
+                var contentType = responseHeaders.SingleOrDefault(h => h.Name == "content-type").Value;
+                var grpcStatusCodeString = responseHeaders.SingleOrDefault(h => h.Name == "grpc-status").Value;
+                var grpcMessage = responseHeaders.SingleOrDefault(h => h.Name == "grpc-message").Value;
+
+                var grpcStatusCode = grpcStatusCodeString == null ? StatusCode.OK : (StatusCode)Enum.Parse(typeof(StatusCode), grpcStatusCodeString);
+
+                // Read response data
+                var response = Activator.CreateInstance<TResponse>();
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    // See https://github.com/Matthias247/http2dotnet/issues/1
+                    var streamImplType = typeof(IStream).Assembly.GetType("Http2.StreamImpl");
+                    var readDataPossibleField = streamImplType.GetField("readDataPossible", BindingFlags.NonPublic | BindingFlags.Instance);
+                    var readDataPossible = (AsyncManualResetEvent)readDataPossibleField.GetValue(stream);
+                    readDataPossible.Set();
+
+                    buffer = new byte[1024];
+                    while (true)
+                    {
+                        var readDataResult = stream.ReadAsync(new ArraySegment<byte>(buffer)).GetAwaiter().GetResult();
+                        ms.Write(buffer, 0, readDataResult.BytesRead);
+
+                        if (readDataResult.EndOfStream)
+                        {
+                            break;
+                        }
+                    }
+
+                    var responseMessage = response as IMessage;
+
+                    ms.Position = 0;
+                    bool isCompressed = ms.ReadByte() != 0;
+                    byte[] lengthBuffer = new byte[4];
+                    ms.Read(lengthBuffer, 0, 4);
+                    Array.Reverse(lengthBuffer);
+                    var length = BitConverter.ToUInt32(lengthBuffer, 0);
+                    this.logger?.LogTrace("Read {length} bytes of data");
+
+                    responseMessage.MergeFrom(ms);
+                }
+
+                var responseTrailers = stream.ReadTrailersAsync().GetAwaiter().GetResult();
+
+                if (grpcStatusCode != StatusCode.OK)
+                {
+                    var status = new Status(grpcStatusCode, grpcMessage);
+                    var metadata = new Metadata();
+
+                    foreach (var trailer in responseTrailers)
+                    {
+                        metadata.Add(new Metadata.Entry(trailer.Name, trailer.Value));
+                    }
+
+                    throw new Grpc.Core.RpcException(status, metadata);
+                }
+
+                return new AsyncUnaryCall<TResponse>(Task.FromResult(response), Task.FromResult((Metadata)null), () => Status.DefaultSuccess, null, null);
+            }
         }
 
         public override TResponse BlockingUnaryCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string host, CallOptions options, TRequest request)
