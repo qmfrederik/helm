@@ -2,10 +2,13 @@
 using Grpc.Core;
 using Http2;
 using Http2.Hpack;
+using Http2.Internal;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Helm.Helm
@@ -13,10 +16,12 @@ namespace Helm.Helm
     public class StreamCallInvoker : CallInvoker
     {
         private readonly Func<Stream> stream;
+        private readonly ILogger logger;
 
-        public StreamCallInvoker(Func<Stream> stream)
+        public StreamCallInvoker(Func<Stream> stream, ILogger<StreamCallInvoker> logger = null)
         {
             this.stream = stream ?? throw new ArgumentNullException(nameof(stream));
+            this.logger = logger;
         }
 
         public override AsyncClientStreamingCall<TRequest, TResponse> AsyncClientStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string host, CallOptions options)
@@ -96,6 +101,14 @@ namespace Helm.Helm
                 // Wait for response headers
                 var responseHeaders = stream.ReadHeadersAsync().GetAwaiter().GetResult();
 
+                if (this.logger != null)
+                {
+                    foreach (var header in responseHeaders)
+                    {
+                        this.logger.LogTrace("{header.Name} = {header.Value}");
+                    }
+                }
+
                 var statusCode = responseHeaders.SingleOrDefault(h => h.Name == ":status").Value;
                 var contentType = responseHeaders.SingleOrDefault(h => h.Name == "content-type").Value;
                 var grpcStatusCodeString = responseHeaders.SingleOrDefault(h => h.Name == "grpc-status").Value;
@@ -106,33 +119,37 @@ namespace Helm.Helm
                 // Read response data
                 var response = Activator.CreateInstance<TResponse>();
 
-                if (stream.State != StreamState.Closed)
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    using (MemoryStream ms = new MemoryStream())
+                    // See https://github.com/Matthias247/http2dotnet/issues/1
+                    var streamImplType = typeof(IStream).Assembly.GetType("Http2.StreamImpl");
+                    var readDataPossibleField = streamImplType.GetField("readDataPossible", BindingFlags.NonPublic | BindingFlags.Instance);
+                    var readDataPossible = (AsyncManualResetEvent)readDataPossibleField.GetValue(stream);
+                    readDataPossible.Set();
+
+                    buffer = new byte[1024];
+                    while (true)
                     {
-                        buffer = new byte[1024];
-                        while (true)
+                        var readDataResult = stream.ReadAsync(new ArraySegment<byte>(buffer)).GetAwaiter().GetResult();
+                        ms.Write(buffer, 0, readDataResult.BytesRead);
+
+                        if (readDataResult.EndOfStream)
                         {
-                            var readDataResult = stream.ReadAsync(new ArraySegment<byte>(buffer)).GetAwaiter().GetResult();
-                            ms.Write(buffer, 0, readDataResult.BytesRead);
-
-                            if (readDataResult.EndOfStream)
-                            {
-                                break;
-                            }
+                            break;
                         }
-
-                        var responseMessage = response as IMessage;
-
-                        ms.Position = 0;
-                        bool isCompressed = ms.ReadByte() != 0;
-                        byte[] lengthBuffer = new byte[4];
-                        ms.Read(lengthBuffer, 0, 4);
-                        Array.Reverse(lengthBuffer);
-                        var length = BitConverter.ToUInt32(lengthBuffer, 0);
-
-                        responseMessage.MergeFrom(ms);
                     }
+
+                    var responseMessage = response as IMessage;
+
+                    ms.Position = 0;
+                    bool isCompressed = ms.ReadByte() != 0;
+                    byte[] lengthBuffer = new byte[4];
+                    ms.Read(lengthBuffer, 0, 4);
+                    Array.Reverse(lengthBuffer);
+                    var length = BitConverter.ToUInt32(lengthBuffer, 0);
+                    this.logger?.LogTrace("Read {length} bytes of data");
+
+                    responseMessage.MergeFrom(ms);
                 }
 
                 var responseTrailers = stream.ReadTrailersAsync().GetAwaiter().GetResult();
