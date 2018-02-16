@@ -88,13 +88,13 @@ namespace Helm.Helm
             return response;
         }
 
-        public async Task<Hapi.Version.Version> GetVersionAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Hapi.Version.Version> GetVersion(CancellationToken cancellationToken = default(CancellationToken))
         {
             var version = await this.client.GetVersionAsync(new GetVersionRequest(), this.GetDefaultHeaders(), cancellationToken: cancellationToken);
             return version.Version;
         }
 
-        public async Task<Hapi.Release.Release> InstallReleaseAsync(Chart chart, string values, string name, bool reuseName, string @namespace = "default", bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Hapi.Release.Release> InstallRelease(Chart chart, string values, string name, bool reuseName, string @namespace = "default", bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (chart == null)
             {
@@ -130,9 +130,9 @@ namespace Helm.Helm
 
         public async Task<List<Release>> ListReleases(
             string filter = null,
-            int limit = int.MaxValue,
+            int limit = 256,
             string @namespace = null,
-            string offset = null,
+            string offset = "",
             ListSort.Types.SortBy sortBy = ListSort.Types.SortBy.Name,
             ListSort.Types.SortOrder sortOrder = ListSort.Types.SortOrder.Asc,
             CancellationToken cancellationToken = default(CancellationToken))
