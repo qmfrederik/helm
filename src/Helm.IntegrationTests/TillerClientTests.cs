@@ -21,7 +21,7 @@ namespace Helm.IntegrationTests
                 var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
                 await Assert.ThrowsAsync<RpcException>(() => client.GetHistory(nameof(GetHistoryTest).ToLower(), 1));
 
-                await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(GetHistoryTest).ToLower(), true, wait: true);
+                await client.InstallRelease(chart.Serialize(), string.Empty, nameof(GetHistoryTest).ToLower(), true, wait: true);
 
                 await Task.Delay(100);
                 var history = await client.GetHistory(nameof(GetHistoryTest).ToLower(), 1);
@@ -47,7 +47,7 @@ namespace Helm.IntegrationTests
                 var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
                 await Assert.ThrowsAsync<RpcException>(() => client.GetReleaseContent(nameof(GetReleaseContentTest).ToLower(), 0));
 
-                await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(GetReleaseContentTest).ToLower(), true, wait: true);
+                await client.InstallRelease(chart.Serialize(), string.Empty, nameof(GetReleaseContentTest).ToLower(), true, wait: true);
                 await Task.Delay(100);
                 var response = await client.GetReleaseContent(nameof(GetReleaseContentTest).ToLower(), 0);
                 Assert.NotNull(response);
@@ -66,7 +66,7 @@ namespace Helm.IntegrationTests
                 var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
                 await Assert.ThrowsAsync<RpcException>(() => client.GetReleaseStatus(nameof(GetReleaseStatusTest).ToLower(), 0));
 
-                await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(GetReleaseStatusTest).ToLower(), true, wait: true);
+                await client.InstallRelease(chart.Serialize(), string.Empty, nameof(GetReleaseStatusTest).ToLower(), true, wait: true);
                 var response = await client.GetReleaseStatus(nameof(GetReleaseStatusTest).ToLower(), 0);
                 Assert.NotNull(response);
 
@@ -78,7 +78,7 @@ namespace Helm.IntegrationTests
         public async Task GetVersionStreamTest()
         {
             var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
-            var version = await client.GetVersionAsync();
+            var version = await client.GetVersion();
             Assert.NotNull(version);
         }
 
@@ -90,9 +90,28 @@ namespace Helm.IntegrationTests
                 var chart = ChartPackage.Open(chartStream);
                 var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
 
-                var result = await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(InstallReleaseTest).ToLower(), true).ConfigureAwait(false);
+                var result = await client.InstallRelease(chart.Serialize(), string.Empty, nameof(InstallReleaseTest).ToLower(), true).ConfigureAwait(false);
                 Assert.NotNull(result);
                 await client.UninstallRelease(nameof(InstallReleaseTest).ToLower(), purge: true);
+            }
+        }
+
+        [Fact]
+        public async Task ListReleasesTest()
+        {
+            using (Stream chartStream = File.OpenRead("charts/hello-world-0.1.0.tgz"))
+            {
+                var chart = ChartPackage.Open(chartStream);
+                var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
+
+                var releases = await client.ListReleases(nameof(ListReleasesTest).ToLower(), limit: 0, @namespace: "default").ConfigureAwait(false);
+                Assert.Empty(releases);
+
+                var result = await client.InstallRelease(chart.Serialize(), string.Empty, nameof(ListReleasesTest).ToLower(), true).ConfigureAwait(false);
+                releases = await client.ListReleases(nameof(ListReleasesTest).ToLower(), limit: 0, @namespace: "default").ConfigureAwait(false);
+                var release = Assert.Single(releases);
+
+                await client.UninstallRelease(nameof(ListReleasesTest).ToLower(), purge: true);
             }
         }
     }
