@@ -49,7 +49,11 @@ namespace Helm.Charts
             {
                 var chartName = chart.Metadata.Name;
                 this.WriteObject(writer, $"{chartName}/Chart.yaml", chart.Metadata);
-                this.WriteString(writer, $"{chartName}/values.yaml", chart.Values.Raw);
+
+                if (!string.IsNullOrWhiteSpace(chart.Values.Raw))
+                {
+                    this.WriteString(writer, $"{chartName}/values.yaml", chart.Values.Raw);
+                }
 
                 foreach (var template in chart.Templates)
                 {
@@ -115,9 +119,14 @@ namespace Helm.Charts
             }
 
             using (var stream = new MemoryStream())
-            using (var textWriter = new StreamWriter(stream, Encoding.UTF8))
             {
-                textWriter.Write(value);
+                // Don't emit a BOM and use Unix-style line endings
+                using (StreamWriter textWriter = new StreamWriter(stream, new UTF8Encoding(false), bufferSize: 4096, leaveOpen: true))
+                {
+                    textWriter.NewLine = "\n";
+                    textWriter.Write(value);
+                }
+
                 stream.Position = 0;
                 writer.Write(path, stream);
             }
