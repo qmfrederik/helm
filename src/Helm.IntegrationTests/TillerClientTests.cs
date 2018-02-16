@@ -22,6 +22,7 @@ namespace Helm.IntegrationTests
 
                 await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(GetHistoryTest).ToLower(), true, wait: true);
 
+                await Task.Delay(100);
                 var history = await client.GetHistory(nameof(GetHistoryTest).ToLower(), 1);
                 Assert.Single(history);
 
@@ -46,6 +47,7 @@ namespace Helm.IntegrationTests
                 await Assert.ThrowsAsync<RpcException>(() => client.GetReleaseContent(nameof(GetReleaseContentTest).ToLower(), 0));
 
                 await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(GetReleaseContentTest).ToLower(), true, wait: true);
+                await Task.Delay(100);
                 var response = await client.GetReleaseContent(nameof(GetReleaseContentTest).ToLower(), 0);
                 Assert.NotNull(response);
 
