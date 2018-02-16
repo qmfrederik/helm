@@ -1,7 +1,12 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.Collections;
+using Grpc.Core;
+using Hapi.Chart;
+using Hapi.Release;
 using Hapi.Services.Tiller;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using static Hapi.Services.Tiller.ReleaseService;
@@ -23,10 +28,64 @@ namespace Helm.Helm
             this.client = new ReleaseServiceClient(callInvoker);
         }
 
-        public TillerClient(Stream stream)
+        public TillerClient(Func<Stream> stream)
         {
             StreamCallInvoker invoker = new StreamCallInvoker(stream);
             this.client = new ReleaseServiceClient(invoker);
+        }
+
+        public async Task<List<Release>> GetHistory(string name, int max, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            GetHistoryRequest request = new GetHistoryRequest()
+            {
+                Max = max,
+                Name = name
+            };
+
+            var response = await this.client.GetHistoryAsync(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            return response.Releases.ToList();
+        }
+
+        public async Task<Release> GetReleaseContent(string name, int version, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            GetReleaseContentRequest request = new GetReleaseContentRequest()
+            {
+                Name = name,
+                Version = version
+            };
+
+            var response = await this.client.GetReleaseContentAsync(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            return response.Release;
+        }
+
+        public async Task<GetReleaseStatusResponse> GetReleaseStatus(string name, int version, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            GetReleaseStatusRequest request = new GetReleaseStatusRequest()
+            {
+                Name = name,
+                Version = version
+            };
+
+            var response = await this.client.GetReleaseStatusAsync(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            return response;
         }
 
         public async Task<Hapi.Version.Version> GetVersionAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -35,7 +94,7 @@ namespace Helm.Helm
             return version.Version;
         }
 
-        public async Task<Hapi.Release.Release> InstallReleaseAsync(Charts.ChartPackage chart, string values, string name, bool reuseName, string @namespace = "default", bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Hapi.Release.Release> InstallReleaseAsync(Chart chart, string values, string name, bool reuseName, string @namespace = "default", bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (chart == null)
             {
@@ -54,7 +113,7 @@ namespace Helm.Helm
 
             InstallReleaseRequest request = new InstallReleaseRequest()
             {
-                Chart = chart.Serialize(),
+                Chart = chart,
                 Name = name,
                 Namespace = @namespace,
                 ReuseName = reuseName,
@@ -69,9 +128,121 @@ namespace Helm.Helm
             return response.Release;
         }
 
-        private Metadata GetDefaultHeaders()
+        public async Task<List<Release>> ListReleases(
+            string filter = null,
+            int limit = int.MaxValue,
+            string @namespace = null,
+            string offset = null,
+            ListSort.Types.SortBy sortBy = ListSort.Types.SortBy.Name,
+            ListSort.Types.SortOrder sortOrder = ListSort.Types.SortOrder.Asc,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            var metadata = new Metadata();
+            ListReleasesRequest request = new ListReleasesRequest()
+            {
+                Filter = filter,
+                Limit = limit,
+                Namespace = @namespace,
+                Offset = offset,
+                SortBy = sortBy,
+                SortOrder = sortOrder
+            };
+
+            var response = this.client.ListReleases(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            List<Release> releases = new List<Release>();
+
+            while (!cancellationToken.IsCancellationRequested && await response.ResponseStream.MoveNext(cancellationToken))
+            {
+                releases.AddRange(response.ResponseStream.Current.Releases);
+            }
+
+            return releases;
+        }
+
+        public async Task<Release> RollbackRelease(string name, int version, bool dryRun = false, bool force = false, bool recreate = false, bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            RollbackReleaseRequest request = new RollbackReleaseRequest()
+            {
+                DryRun = dryRun,
+                Force = force,
+                Name = name,
+                Recreate = recreate,
+                Version = version,
+                Wait = wait
+            };
+
+            var response = await this.client.RollbackReleaseAsync(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            return response.Release;
+        }
+
+        // TODO : Run release test
+
+        public async Task<UninstallReleaseResponse> UninstallRelease(string name, bool purge = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            UninstallReleaseRequest request = new UninstallReleaseRequest()
+            {
+                Name = name,
+                Purge = purge,
+                DisableHooks = true
+            };
+
+            var response = await this.client.UninstallReleaseAsync(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            return response;
+        }
+
+        public async Task<Release> UpdateRelease(Chart chart, string values, string name, bool dryRun = false, bool force = false, bool recreate = false, bool resetValues = false, bool reuseValues = false, bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (chart == null)
+            {
+                throw new ArgumentNullException(nameof(chart));
+            }
+
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            UpdateReleaseRequest request = new UpdateReleaseRequest()
+            {
+                Chart = chart,
+                DryRun = dryRun,
+                Force = force,
+                Name = name,
+                Recreate = recreate,
+                ResetValues = resetValues,
+                ReuseValues = reuseValues,
+                Values = new Config()
+                {
+                    Raw = values
+                },
+                Wait = wait
+            };
+
+            var response = await this.client.UpdateReleaseAsync(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
+
+            return response.Release;
+        }
+
+        private Grpc.Core.Metadata GetDefaultHeaders()
+        {
+            var metadata = new Grpc.Core.Metadata();
             metadata.Add("x-helm-api-client", Version);
             return metadata;
         }

@@ -44,5 +44,12 @@ namespace Helm.IntegrationTests
             await socket.ConnectAsync(endPoint).ConfigureAwait(false);
             return socket;
         }
+
+        public static async Task<Stream> GetStream()
+        {
+            var socket = await GetSocket().ConfigureAwait(false);
+            var stream = new NetworkStream(socket, ownsSocket: true);
+            return stream;
+        }
     }
 }
