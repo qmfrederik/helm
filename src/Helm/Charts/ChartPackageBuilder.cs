@@ -86,9 +86,12 @@ namespace Helm.Charts
             }
 
             using (var stream = new MemoryStream())
-            using (var textWriter = new StreamWriter(stream, Encoding.UTF8))
             {
-                this.serializer.Serialize(textWriter, value);
+                using (var textWriter = new StreamWriter(stream, Encoding.UTF8, bufferSize: 4096, leaveOpen: true))
+                {
+                    this.serializer.Serialize(textWriter, value);
+                }
+
                 stream.Position = 0;
                 writer.Write(path, stream);
             }
