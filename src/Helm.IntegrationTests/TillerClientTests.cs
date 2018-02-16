@@ -29,7 +29,7 @@ namespace Helm.IntegrationTests
             using (NetworkStream tillerStream = new NetworkStream(socket))
             using (Stream chartStream = File.OpenRead("charts/hello-world-0.1.0.tgz"))
             {
-                var chart = Chart.Open(chartStream);
+                var chart = ChartPackage.Open(chartStream);
                 var client = new TillerClient(tillerStream);
 
                 var result = await client.InstallReleaseAsync(chart, string.Empty, "hello-world", true).ConfigureAwait(false);

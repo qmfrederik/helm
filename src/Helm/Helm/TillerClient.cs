@@ -35,7 +35,7 @@ namespace Helm.Helm
             return version.Version;
         }
 
-        public async Task<Hapi.Release.Release> InstallReleaseAsync(Charts.Chart chart, string values, string name, bool reuseName, string @namespace = "default", bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Hapi.Release.Release> InstallReleaseAsync(Charts.ChartPackage chart, string values, string name, bool reuseName, string @namespace = "default", bool wait = false, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (chart == null)
             {
