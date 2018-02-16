@@ -26,6 +26,7 @@
     </PackageReference>
     <PackageReference Include="http2dotnet" Version="0.8.0" />
     <PackageReference Include="KubernetesClient" Version="0.4.0-beta" />
+    <PackageReference Include="SharpCompress" Version="0.19.2" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.1.16">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

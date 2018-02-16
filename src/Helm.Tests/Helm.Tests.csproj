@@ -15,4 +15,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Helm\Helm.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="charts\hello-world-0.1.0.tgz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

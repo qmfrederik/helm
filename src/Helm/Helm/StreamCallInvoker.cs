@@ -3,7 +3,9 @@ using Grpc.Core;
 using Http2;
 using Http2.Hpack;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Helm.Helm
@@ -53,15 +55,27 @@ namespace Helm.Helm
                 inputStream: streams.ReadableStream,
                 outputStream: streams.WriteableStream);
 
-            HeaderField[] headers = new HeaderField[]
+            var headers = new Collection<HeaderField>
             {
                 new HeaderField { Name = ":method", Value = "POST" },
                 new HeaderField { Name = ":scheme", Value = "http" },
-                new HeaderField { Name = ":path", Value = "/hapi.services.tiller.ReleaseService/GetVersion" },
+                new HeaderField { Name = ":path", Value = method.FullName },
                 new HeaderField { Name = ":authority", Value = "pubsub.googleapis.com" },
                 new HeaderField { Name = "grpc-timeout", Value = "1S" },
-                new HeaderField {Name = "content-type", Value = "application/grpc+proto" }
+                new HeaderField { Name = "content-type", Value = "application/grpc+proto" }
             };
+
+            if (options.Headers != null)
+            {
+                foreach (var header in options.Headers)
+                {
+                    headers.Add(new HeaderField()
+                    {
+                        Name = header.Key,
+                        Value = header.Value
+                    });
+                }
+            }
 
             var stream = http2Connection.CreateStreamAsync(
                 headers, endOfStream: false).GetAwaiter().GetResult();
@@ -72,6 +86,7 @@ namespace Helm.Helm
             stream.WriteAsync(new ArraySegment<byte>(buffer, 0, 1), endOfStream: false);
             int size = requestMessage.CalculateSize();
             buffer = BitConverter.GetBytes(size);
+            Array.Reverse(buffer);
             stream.WriteAsync(new ArraySegment<byte>(buffer, 0, 4), endOfStream: size == 0);
 
             if (size > 0)
@@ -81,7 +96,14 @@ namespace Helm.Helm
             }
 
             // Wait for response headers
-            var reponseHeaders = stream.ReadHeadersAsync().GetAwaiter().GetResult();
+            var responseHeaders = stream.ReadHeadersAsync().GetAwaiter().GetResult();
+
+            var statusCode = responseHeaders.SingleOrDefault(h => h.Name == ":status").Value;
+            var contentType = responseHeaders.SingleOrDefault(h => h.Name == "content-type").Value;
+            var grpcStatusCodeString = responseHeaders.SingleOrDefault(h => h.Name == "grpc-status").Value;
+            var grpcMessage = responseHeaders.SingleOrDefault(h => h.Name == "grpc-message").Value;
+
+            var grpcStatusCode = grpcStatusCodeString == null ? StatusCode.OK : (StatusCode)Enum.Parse(typeof(StatusCode), grpcStatusCodeString);
 
             // Read response data
             var response = Activator.CreateInstance<TResponse>();
@@ -109,6 +131,21 @@ namespace Helm.Helm
                 var length = BitConverter.ToUInt32(lengthBuffer, 0);
 
                 responseMessage.MergeFrom(ms);
+            }
+
+            var responseTrailers = stream.ReadTrailersAsync().GetAwaiter().GetResult();
+
+            if (grpcStatusCode != StatusCode.OK)
+            {
+                var status = new Status(grpcStatusCode, grpcMessage);
+                var metadata = new Metadata();
+
+                foreach (var trailer in responseTrailers)
+                {
+                    metadata.Add(new Metadata.Entry(trailer.Name, trailer.Value));
+                }
+
+                throw new Grpc.Core.RpcException(status, metadata);
             }
 
             return new AsyncUnaryCall<TResponse>(Task.FromResult(response), Task.FromResult((Metadata)null), () => Status.DefaultSuccess, null, null);
