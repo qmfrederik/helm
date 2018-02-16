@@ -1,6 +1,7 @@
 ﻿using Grpc.Core;
 using Helm.Charts;
 using Helm.Helm;
+using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -28,11 +29,11 @@ namespace Helm.IntegrationTests
 
                 var response = await client.UninstallRelease(nameof(GetHistoryTest).ToLower(), purge: false);
                 Assert.Empty(response.Info);
-                Assert.Null(response.Release);
+                Assert.NotNull(response.Release);
 
                 response = await client.UninstallRelease(nameof(GetHistoryTest).ToLower(), purge: true);
                 Assert.Empty(response.Info);
-                Assert.Null(response.Release);
+                Assert.NotNull(response.Release);
             }
         }
 
@@ -90,6 +91,8 @@ namespace Helm.IntegrationTests
                 var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
 
                 var result = await client.InstallReleaseAsync(chart.Serialize(), string.Empty, nameof(InstallReleaseTest).ToLower(), true).ConfigureAwait(false);
+                Assert.NotNull(result);
+                await client.UninstallRelease(nameof(InstallReleaseTest).ToLower(), purge: true);
             }
         }
     }
