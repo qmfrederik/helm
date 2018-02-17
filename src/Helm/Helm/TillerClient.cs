@@ -135,6 +135,7 @@ namespace Helm.Helm
             string offset = "",
             ListSort.Types.SortBy sortBy = ListSort.Types.SortBy.Name,
             ListSort.Types.SortOrder sortOrder = ListSort.Types.SortOrder.Asc,
+            IEnumerable<Hapi.Release.Status.Types.Code> statusCodes = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             ListReleasesRequest request = new ListReleasesRequest()
@@ -146,6 +147,11 @@ namespace Helm.Helm
                 SortBy = sortBy,
                 SortOrder = sortOrder
             };
+
+            if (statusCodes != null)
+            {
+                request.StatusCodes.AddRange(statusCodes);
+            }
 
             var response = this.client.ListReleases(request, this.GetDefaultHeaders(), cancellationToken: cancellationToken);
 
