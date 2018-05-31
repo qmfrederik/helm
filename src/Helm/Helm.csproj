@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -25,9 +25,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="http2dotnet" Version="0.8.0" />
-    <PackageReference Include="KubernetesClient" Version="0.4.0-beta" />
+    <PackageReference Include="KubernetesClient" Version="1.0.0" />
     <PackageReference Include="SharpCompress" Version="0.19.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.1.16">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
