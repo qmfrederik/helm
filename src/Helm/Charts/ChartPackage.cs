@@ -96,6 +96,11 @@ namespace Helm.Charts
             }
         }
 
+        public static ChartPackage Open(Stream stream)
+        {
+            return new ChartPackage(stream);
+        }
+
         public Hapi.Chart.Chart Serialize()
         {
             var chart = new Hapi.Chart.Chart();
@@ -154,9 +159,9 @@ namespace Helm.Charts
             return chart;
         }
 
-        public static ChartPackage Open(Stream stream)
+        private static string Normalize(string path)
         {
-            return new ChartPackage(stream);
+            return path.Replace('\\', '/');
         }
 
         private bool IsTemplate(string entryName)
@@ -197,11 +202,6 @@ namespace Helm.Charts
             }
 
             throw new InvalidOperationException($"The helm chart does not contain a file named {filename}");
-        }
-
-        private static string Normalize(string path)
-        {
-            return path.Replace('\\', '/');
         }
     }
 }

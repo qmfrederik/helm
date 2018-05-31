@@ -22,6 +22,12 @@ namespace Helm.Helm
             this.kubernetes = kubernetes ?? throw new ArgumentNullException(nameof(kubernetes));
         }
 
+        public static Task<Stream> Connect(KubernetesClientConfiguration configuration, string @namespace = "kube-system", CancellationToken cancellationToken = default(CancellationToken))
+        {
+            TillerLocator locator = new TillerLocator(configuration);
+            return locator.Connect(@namespace, cancellationToken);
+        }
+
         public async Task<IPEndPoint> Locate(string @namespace = "kube-system", CancellationToken cancellationToken = default(CancellationToken))
         {
             var tillerPods = await this.kubernetes.ListNamespacedPodAsync(@namespace, labelSelector: "app=helm,name=tiller", cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -42,12 +48,6 @@ namespace Helm.Helm
             var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             await socket.ConnectAsync(endPoint).ConfigureAwait(false);
             return new NetworkStream(socket, ownsSocket: true);
-        }
-
-        public static Task<Stream> Connect(KubernetesClientConfiguration configuration, string @namespace = "kube-system", CancellationToken cancellationToken = default(CancellationToken))
-        {
-            TillerLocator locator = new TillerLocator(configuration);
-            return locator.Connect(@namespace, cancellationToken);
         }
     }
 }

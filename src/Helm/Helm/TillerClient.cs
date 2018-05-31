@@ -15,8 +15,8 @@ namespace Helm.Helm
 {
     public class TillerClient
     {
-        private readonly ReleaseServiceClient client;
         private const string Version = "2.7.2";
+        private readonly ReleaseServiceClient client;
 
         public TillerClient(string target = "127.0.0.1:44134")
         {
@@ -188,7 +188,6 @@ namespace Helm.Helm
         }
 
         // TODO : Run release test
-
         public async Task<UninstallReleaseResponse> UninstallRelease(string name, bool purge = false, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrWhiteSpace(name))
