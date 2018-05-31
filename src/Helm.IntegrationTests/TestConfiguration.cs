@@ -16,14 +16,14 @@ namespace Helm.IntegrationTests
         {
             if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("KUBECONFIG")))
             {
-                return KubernetesClientConfiguration.BuildConfigFromConfigFile(null, Environment.GetEnvironmentVariable("KUBECONFIG"));
+                return KubernetesClientConfiguration.BuildConfigFromConfigFile((string)null, Environment.GetEnvironmentVariable("KUBECONFIG"));
             }
             if (File.Exists("minikube.config"))
             {
                 // If you're using minikube, things can get akward if you import the root CA in the Trusted Root Certificate Authorities list
                 // and re-create your cluster. Certificates issued will be rejected by Windows because the DN of the root CA doesn't change;
                 // yet the certificate will have a different signature.
-                return KubernetesClientConfiguration.BuildConfigFromConfigFile(null, "minikube.config");
+                return KubernetesClientConfiguration.BuildConfigFromConfigFile((string)null, "minikube.config");
             }
             else
             {
