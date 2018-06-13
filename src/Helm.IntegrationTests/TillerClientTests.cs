@@ -114,5 +114,11 @@ namespace Helm.IntegrationTests
                 await client.UninstallRelease(nameof(ListReleasesTest).ToLower(), purge: true);
             }
         }
+        [Fact]
+        public async Task ListReleasesAcceptEmptyParameterTest()
+        {            
+            var client = new TillerClient(() => TestConfiguration.GetStream().GetAwaiter().GetResult());
+            var releases = await client.ListReleases().ConfigureAwait(false);
+        }
     }
 }

@@ -129,9 +129,9 @@ namespace Helm.Helm
         }
 
         public async Task<List<Release>> ListReleases(
-            string filter = null,
+            string filter = "",
             int limit = 256,
-            string @namespace = null,
+            string @namespace = "",
             string offset = "",
             ListSort.Types.SortBy sortBy = ListSort.Types.SortBy.Name,
             ListSort.Types.SortOrder sortOrder = ListSort.Types.SortOrder.Asc,
