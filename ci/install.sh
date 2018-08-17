@@ -1,3 +1,5 @@
+#!/bin/bash -eux
+
 # Install .NET Core
 sudo apt-get install -y curl apt-transport-https libc6-dev
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
