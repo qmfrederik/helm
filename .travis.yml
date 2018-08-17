@@ -12,6 +12,7 @@ before_script:
 - kubectl cluster-info
 
 script:
+- dotnet --info
 - sed -i.bak 's/as-user-extra/#as-user-extra/' $KUBECONFIG
 - dotnet restore src/Helm.sln
 - cd proto
