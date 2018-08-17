@@ -5,7 +5,7 @@ sudo apt-get install -y curl apt-transport-https libc6-dev
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main" | sudo tee /etc/apt/sources.list.d/dotnetdev.list > /dev/null
 sudo apt-get update
-sudo apt-get install -y dotnet-sdk-2.1.302
+sudo apt-get install -y dotnet-sdk-2.1.400
 
 # Install PowerShell
 curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list > /dev/null
