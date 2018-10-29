@@ -1,6 +1,7 @@
 ﻿using Helm.Charts;
 using System.IO;
 using Xunit;
+using System.Linq;
 
 namespace Helm.Tests
 {
@@ -29,6 +30,29 @@ namespace Helm.Tests
                 Assert.Equal("A Helm chart for Kubernetes", metadata.Description);
                 Assert.Equal("hello-world", metadata.Name);
                 Assert.Equal("0.1.0", metadata.Version);
+            }
+        }
+
+        [Fact]
+        public static void DependencyTest()
+        {
+            using (Stream stream = File.OpenRead("charts/kafka-0.8.8.tgz"))
+            {
+                var package = ChartPackage.Open(stream);
+                var chart = package.Serialize();
+
+                Assert.NotNull(chart.Metadata);
+                Assert.NotNull(chart.Values);
+                Assert.NotEmpty(chart.Templates);
+                Assert.NotEmpty(chart.Dependencies);
+                var dependChart = chart.Dependencies[0];
+
+                Assert.NotNull(dependChart);
+                Assert.NotNull(dependChart.Metadata);
+                Assert.Equal("zookeeper", dependChart.Metadata.Name);
+                Assert.NotNull(dependChart.Values);
+                Assert.NotEmpty(dependChart.Templates);
+                Assert.NotNull(dependChart.Values.Raw);
             }
         }
     }
