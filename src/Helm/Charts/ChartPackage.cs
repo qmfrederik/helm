@@ -3,6 +3,7 @@ using Google.Protobuf.WellKnownTypes;
 using SharpCompress.Readers;
 using SharpCompress.Readers.Tar;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
@@ -108,8 +109,11 @@ namespace Helm.Charts
 
         public Hapi.Chart.Chart Serialize()
         {
-            var chart = new Hapi.Chart.Chart();
-            chart.Metadata = this.Metadata;
+            var chartStack = new Stack<(string rootPath, string chartName, Hapi.Chart.Chart chart)>();
+            Hapi.Chart.Chart chart = null;
+            //chartStack.Push((string.Empty, string.Empty, chart));
+
+            //chart.Metadata = this.Metadata;
 
             this.stream.Seek(0, SeekOrigin.Begin);
 
@@ -118,7 +122,48 @@ namespace Helm.Charts
             {
                 while (reader.MoveToNextEntry())
                 {
-                    if (this.IsTemplate(reader.Entry.Key))
+                    var key = Normalize(reader.Entry.Key);
+
+                    var basePath = chartStack.Count == 0 ? string.Empty : chartStack.Peek().rootPath;
+
+                    var chartName = key.GetName(basePath);
+                    if (chartStack.Count == 0)
+                    {
+                        chartStack.Push((basePath, chartName, new Hapi.Chart.Chart()));
+                    }
+                    else if (chartName != chartStack.Peek().chartName)
+                    {
+                        var chartToAdd = chartStack.Pop().chart;
+                        chartStack.Peek().chart.Dependencies.Add(chartToAdd);
+
+                        chartStack.Push((basePath, chartName, new Hapi.Chart.Chart()));
+                    }
+
+                    var currentChart = chartStack.Peek();
+                    while (key.TryParseDependency(currentChart.rootPath, currentChart.chartName, out chartName))
+                    {
+                        chartStack.Push(
+                            (currentChart.rootPath + currentChart.chartName + "charts/",
+                            chartName,
+                            new Hapi.Chart.Chart()));
+
+                        currentChart = chartStack.Peek();
+                    }
+
+                    chart = currentChart.chart;
+
+                    // Process items which is current chart
+                    if (key.IsMetadata(currentChart.rootPath, currentChart.chartName))
+                    {
+                        using (Stream entryStream = reader.OpenEntryStream())
+                        {
+                            using (TextReader textReader = new StreamReader(entryStream))
+                            {
+                                chart.Metadata = this.deserializer.Deserialize<Hapi.Chart.Metadata>(textReader);
+                            }
+                        }
+                    }
+                    else if (key.IsTemplate(currentChart.rootPath, currentChart.chartName))
                     {
                         using (Stream entryStream = reader.OpenEntryStream())
                         {
@@ -131,7 +176,7 @@ namespace Helm.Charts
                             chart.Templates.Add(template);
                         }
                     }
-                    else if (this.IsValues(reader.Entry.Key))
+                    else if (key.IsValues(currentChart.rootPath, currentChart.chartName))
                     {
                         using (Stream entryStream = reader.OpenEntryStream())
                         using (StreamReader entryReader = new StreamReader(entryStream))
@@ -142,9 +187,7 @@ namespace Helm.Charts
                             };
                         }
                     }
-                    else if (!this.IsTemplate(reader.Entry.Key)
-                        && !this.IsMetadata(reader.Entry.Key)
-                        && !this.IsValues(reader.Entry.Key))
+                    else
                     {
                         // TODO: respect .helmignore
                         using (Stream entryStream = reader.OpenEntryStream())
@@ -161,6 +204,14 @@ namespace Helm.Charts
 
             // Dependencies are currently not supported
             // chart.Dependencies.Add();
+            while (chartStack.Count > 1)
+            {
+                var chartToAdd = chartStack.Pop().chart;
+                chartStack.Peek().chart.Dependencies.Add(chartToAdd);
+
+                chart = chartStack.Peek().chart;
+            }
+
             return chart;
         }
 
