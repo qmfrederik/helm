@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <Folder Include="Hapi\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
   <ItemGroup>
