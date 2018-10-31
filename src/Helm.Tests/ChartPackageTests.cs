@@ -55,5 +55,27 @@ namespace Helm.Tests
                 Assert.NotNull(dependChart.Values.Raw);
             }
         }
+
+        [Fact]
+        public static void LoadFromTest()
+        {
+            using (Stream stream = File.OpenRead("charts/kafka-0.8.8.tgz"))
+            {
+                var chart = ChartPackage.LoadFrom(stream);
+
+                Assert.NotNull(chart.Metadata);
+                Assert.NotNull(chart.Values);
+                Assert.NotEmpty(chart.Templates);
+                Assert.NotEmpty(chart.Dependencies);
+                var dependChart = chart.Dependencies[0];
+
+                Assert.NotNull(dependChart);
+                Assert.NotNull(dependChart.Metadata);
+                Assert.Equal("zookeeper", dependChart.Metadata.Name);
+                Assert.NotNull(dependChart.Values);
+                Assert.NotEmpty(dependChart.Templates);
+                Assert.NotNull(dependChart.Values.Raw);
+            }
+        }
     }
 }
