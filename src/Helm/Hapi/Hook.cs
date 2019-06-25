@@ -25,18 +25,19 @@ namespace Hapi.Release {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdoYXBpL3JlbGVhc2UvaG9vay5wcm90bxIMaGFwaS5yZWxlYXNlGh9nb29n",
-            "bGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvIuYDCgRIb29rEgwKBG5hbWUY",
+            "bGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvIpEECgRIb29rEgwKBG5hbWUY",
             "ASABKAkSDAoEa2luZBgCIAEoCRIMCgRwYXRoGAMgASgJEhAKCG1hbmlmZXN0",
             "GAQgASgJEigKBmV2ZW50cxgFIAMoDjIYLmhhcGkucmVsZWFzZS5Ib29rLkV2",
             "ZW50EiwKCGxhc3RfcnVuGAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVz",
             "dGFtcBIOCgZ3ZWlnaHQYByABKAUSOAoPZGVsZXRlX3BvbGljaWVzGAggAygO",
-            "Mh8uaGFwaS5yZWxlYXNlLkhvb2suRGVsZXRlUG9saWN5ItQBCgVFdmVudBIL",
+            "Mh8uaGFwaS5yZWxlYXNlLkhvb2suRGVsZXRlUG9saWN5IuUBCgVFdmVudBIL",
             "CgdVTktOT1dOEAASDwoLUFJFX0lOU1RBTEwQARIQCgxQT1NUX0lOU1RBTEwQ",
             "AhIOCgpQUkVfREVMRVRFEAMSDwoLUE9TVF9ERUxFVEUQBBIPCgtQUkVfVVBH",
             "UkFERRAFEhAKDFBPU1RfVVBHUkFERRAGEhAKDFBSRV9ST0xMQkFDSxAHEhEK",
             "DVBPU1RfUk9MTEJBQ0sQCBIYChRSRUxFQVNFX1RFU1RfU1VDQ0VTUxAJEhgK",
-            "FFJFTEVBU0VfVEVTVF9GQUlMVVJFEAoiKQoMRGVsZXRlUG9saWN5Eg0KCVNV",
-            "Q0NFRURFRBAAEgoKBkZBSUxFRBABQglaB3JlbGVhc2ViBnByb3RvMw=="));
+            "FFJFTEVBU0VfVEVTVF9GQUlMVVJFEAoSDwoLQ1JEX0lOU1RBTEwQCyJDCgxE",
+            "ZWxldGVQb2xpY3kSDQoJU1VDQ0VFREVEEAASCgoGRkFJTEVEEAESGAoUQkVG",
+            "T1JFX0hPT0tfQ1JFQVRJT04QAkIJWgdyZWxlYXNlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -402,11 +403,13 @@ namespace Hapi.Release {
         [pbr::OriginalName("POST_ROLLBACK")] PostRollback = 8,
         [pbr::OriginalName("RELEASE_TEST_SUCCESS")] ReleaseTestSuccess = 9,
         [pbr::OriginalName("RELEASE_TEST_FAILURE")] ReleaseTestFailure = 10,
+        [pbr::OriginalName("CRD_INSTALL")] CrdInstall = 11,
       }
 
       public enum DeletePolicy {
         [pbr::OriginalName("SUCCEEDED")] Succeeded = 0,
         [pbr::OriginalName("FAILED")] Failed = 1,
+        [pbr::OriginalName("BEFORE_HOOK_CREATION")] BeforeHookCreation = 2,
       }
 
     }

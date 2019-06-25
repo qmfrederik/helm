@@ -3,7 +3,7 @@
 //     source: hapi/services/tiller.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2016 The Kubernetes Authors All rights reserved.
+// Copyright The Helm Authors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -239,7 +239,7 @@ namespace Hapi.Services.Tiller {
       }
 
       /// <summary>
-      /// ReleaseHistory retrieves a releasse's history.
+      /// ReleaseHistory retrieves a release's history.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -623,7 +623,7 @@ namespace Hapi.Services.Tiller {
         return CallInvoker.AsyncUnaryCall(__Method_RollbackRelease, null, options, request);
       }
       /// <summary>
-      /// ReleaseHistory retrieves a releasse's history.
+      /// ReleaseHistory retrieves a release's history.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -635,7 +635,7 @@ namespace Hapi.Services.Tiller {
         return GetHistory(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// ReleaseHistory retrieves a releasse's history.
+      /// ReleaseHistory retrieves a release's history.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -645,7 +645,7 @@ namespace Hapi.Services.Tiller {
         return CallInvoker.BlockingUnaryCall(__Method_GetHistory, null, options, request);
       }
       /// <summary>
-      /// ReleaseHistory retrieves a releasse's history.
+      /// ReleaseHistory retrieves a release's history.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -657,7 +657,7 @@ namespace Hapi.Services.Tiller {
         return GetHistoryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// ReleaseHistory retrieves a releasse's history.
+      /// ReleaseHistory retrieves a release's history.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

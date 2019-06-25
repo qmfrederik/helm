@@ -287,7 +287,7 @@ namespace Hapi.Release {
         /// </summary>
         [pbr::OriginalName("DEPLOYED")] Deployed = 1,
         /// <summary>
-        /// Status_DELETED indicates that a release has been deleted from Kubermetes.
+        /// Status_DELETED indicates that a release has been deleted from Kubernetes.
         /// </summary>
         [pbr::OriginalName("DELETED")] Deleted = 2,
         /// <summary>

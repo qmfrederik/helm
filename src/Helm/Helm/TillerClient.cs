@@ -15,7 +15,7 @@ namespace Helm.Helm
 {
     public class TillerClient
     {
-        private const string Version = "2.7.2";
+        private const string Version = "2.14.1";
         private readonly ReleaseServiceClient client;
 
         public TillerClient(string target = "127.0.0.1:44134")

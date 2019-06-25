@@ -38,38 +38,39 @@ namespace Hapi.Services.Rudder {
             "ASABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZSJtChVEZWxldGVSZWxlYXNl",
             "UmVzcG9uc2USJgoHcmVsZWFzZRgBIAEoCzIVLmhhcGkucmVsZWFzZS5SZWxl",
             "YXNlEiwKBnJlc3VsdBgCIAEoCzIcLmhhcGkuc2VydmljZXMucnVkZGVyLlJl",
-            "c3VsdCKmAQoVVXBncmFkZVJlbGVhc2VSZXF1ZXN0EiYKB2N1cnJlbnQYASAB",
+            "c3VsdCK9AQoVVXBncmFkZVJlbGVhc2VSZXF1ZXN0EiYKB2N1cnJlbnQYASAB",
             "KAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZRIlCgZ0YXJnZXQYAiABKAsyFS5o",
             "YXBpLnJlbGVhc2UuUmVsZWFzZRIPCgdUaW1lb3V0GAMgASgDEgwKBFdhaXQY",
-            "BCABKAgSEAoIUmVjcmVhdGUYBSABKAgSDQoFRm9yY2UYBiABKAgibgoWVXBn",
-            "cmFkZVJlbGVhc2VSZXNwb25zZRImCgdyZWxlYXNlGAEgASgLMhUuaGFwaS5y",
-            "ZWxlYXNlLlJlbGVhc2USLAoGcmVzdWx0GAIgASgLMhwuaGFwaS5zZXJ2aWNl",
-            "cy5ydWRkZXIuUmVzdWx0IqcBChZSb2xsYmFja1JlbGVhc2VSZXF1ZXN0EiYK",
-            "B2N1cnJlbnQYASABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZRIlCgZ0YXJn",
-            "ZXQYAiABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZRIPCgdUaW1lb3V0GAMg",
-            "ASgDEgwKBFdhaXQYBCABKAgSEAoIUmVjcmVhdGUYBSABKAgSDQoFRm9yY2UY",
-            "BiABKAgibwoXUm9sbGJhY2tSZWxlYXNlUmVzcG9uc2USJgoHcmVsZWFzZRgB",
-            "IAEoCzIVLmhhcGkucmVsZWFzZS5SZWxlYXNlEiwKBnJlc3VsdBgCIAEoCzIc",
-            "LmhhcGkuc2VydmljZXMucnVkZGVyLlJlc3VsdCI+ChRSZWxlYXNlU3RhdHVz",
-            "UmVxdWVzdBImCgdyZWxlYXNlGAEgASgLMhUuaGFwaS5yZWxlYXNlLlJlbGVh",
-            "c2UiYQoVUmVsZWFzZVN0YXR1c1Jlc3BvbnNlEiYKB3JlbGVhc2UYASABKAsy",
-            "FS5oYXBpLnJlbGVhc2UuUmVsZWFzZRIgCgRpbmZvGAIgASgLMhIuaGFwaS5y",
-            "ZWxlYXNlLkluZm8ypgUKFFJlbGVhc2VNb2R1bGVTZXJ2aWNlEmYKB1ZlcnNp",
-            "b24SKy5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5WZXJzaW9uUmVsZWFzZVJlcXVl",
-            "c3QaLC5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5WZXJzaW9uUmVsZWFzZVJlc3Bv",
-            "bnNlIgASbQoOSW5zdGFsbFJlbGVhc2USKy5oYXBpLnNlcnZpY2VzLnJ1ZGRl",
-            "ci5JbnN0YWxsUmVsZWFzZVJlcXVlc3QaLC5oYXBpLnNlcnZpY2VzLnJ1ZGRl",
-            "ci5JbnN0YWxsUmVsZWFzZVJlc3BvbnNlIgASagoNRGVsZXRlUmVsZWFzZRIq",
-            "LmhhcGkuc2VydmljZXMucnVkZGVyLkRlbGV0ZVJlbGVhc2VSZXF1ZXN0Gisu",
-            "aGFwaS5zZXJ2aWNlcy5ydWRkZXIuRGVsZXRlUmVsZWFzZVJlc3BvbnNlIgAS",
-            "cAoPUm9sbGJhY2tSZWxlYXNlEiwuaGFwaS5zZXJ2aWNlcy5ydWRkZXIuUm9s",
-            "bGJhY2tSZWxlYXNlUmVxdWVzdBotLmhhcGkuc2VydmljZXMucnVkZGVyLlJv",
-            "bGxiYWNrUmVsZWFzZVJlc3BvbnNlIgASbQoOVXBncmFkZVJlbGVhc2USKy5o",
-            "YXBpLnNlcnZpY2VzLnJ1ZGRlci5VcGdyYWRlUmVsZWFzZVJlcXVlc3QaLC5o",
-            "YXBpLnNlcnZpY2VzLnJ1ZGRlci5VcGdyYWRlUmVsZWFzZVJlc3BvbnNlIgAS",
-            "agoNUmVsZWFzZVN0YXR1cxIqLmhhcGkuc2VydmljZXMucnVkZGVyLlJlbGVh",
-            "c2VTdGF0dXNSZXF1ZXN0GisuaGFwaS5zZXJ2aWNlcy5ydWRkZXIuUmVsZWFz",
-            "ZVN0YXR1c1Jlc3BvbnNlIgBCCFoGcnVkZGVyYgZwcm90bzM="));
+            "BCABKAgSEAoIUmVjcmVhdGUYBSABKAgSDQoFRm9yY2UYBiABKAgSFQoNQ2xl",
+            "YW51cE9uRmFpbBgHIAEoCCJuChZVcGdyYWRlUmVsZWFzZVJlc3BvbnNlEiYK",
+            "B3JlbGVhc2UYASABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZRIsCgZyZXN1",
+            "bHQYAiABKAsyHC5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5SZXN1bHQivgEKFlJv",
+            "bGxiYWNrUmVsZWFzZVJlcXVlc3QSJgoHY3VycmVudBgBIAEoCzIVLmhhcGku",
+            "cmVsZWFzZS5SZWxlYXNlEiUKBnRhcmdldBgCIAEoCzIVLmhhcGkucmVsZWFz",
+            "ZS5SZWxlYXNlEg8KB1RpbWVvdXQYAyABKAMSDAoEV2FpdBgEIAEoCBIQCghS",
+            "ZWNyZWF0ZRgFIAEoCBINCgVGb3JjZRgGIAEoCBIVCg1DbGVhbnVwT25GYWls",
+            "GAcgASgIIm8KF1JvbGxiYWNrUmVsZWFzZVJlc3BvbnNlEiYKB3JlbGVhc2UY",
+            "ASABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZRIsCgZyZXN1bHQYAiABKAsy",
+            "HC5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5SZXN1bHQiPgoUUmVsZWFzZVN0YXR1",
+            "c1JlcXVlc3QSJgoHcmVsZWFzZRgBIAEoCzIVLmhhcGkucmVsZWFzZS5SZWxl",
+            "YXNlImEKFVJlbGVhc2VTdGF0dXNSZXNwb25zZRImCgdyZWxlYXNlGAEgASgL",
+            "MhUuaGFwaS5yZWxlYXNlLlJlbGVhc2USIAoEaW5mbxgCIAEoCzISLmhhcGku",
+            "cmVsZWFzZS5JbmZvMqYFChRSZWxlYXNlTW9kdWxlU2VydmljZRJmCgdWZXJz",
+            "aW9uEisuaGFwaS5zZXJ2aWNlcy5ydWRkZXIuVmVyc2lvblJlbGVhc2VSZXF1",
+            "ZXN0GiwuaGFwaS5zZXJ2aWNlcy5ydWRkZXIuVmVyc2lvblJlbGVhc2VSZXNw",
+            "b25zZSIAEm0KDkluc3RhbGxSZWxlYXNlEisuaGFwaS5zZXJ2aWNlcy5ydWRk",
+            "ZXIuSW5zdGFsbFJlbGVhc2VSZXF1ZXN0GiwuaGFwaS5zZXJ2aWNlcy5ydWRk",
+            "ZXIuSW5zdGFsbFJlbGVhc2VSZXNwb25zZSIAEmoKDURlbGV0ZVJlbGVhc2US",
+            "Ki5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5EZWxldGVSZWxlYXNlUmVxdWVzdBor",
+            "LmhhcGkuc2VydmljZXMucnVkZGVyLkRlbGV0ZVJlbGVhc2VSZXNwb25zZSIA",
+            "EnAKD1JvbGxiYWNrUmVsZWFzZRIsLmhhcGkuc2VydmljZXMucnVkZGVyLlJv",
+            "bGxiYWNrUmVsZWFzZVJlcXVlc3QaLS5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5S",
+            "b2xsYmFja1JlbGVhc2VSZXNwb25zZSIAEm0KDlVwZ3JhZGVSZWxlYXNlEisu",
+            "aGFwaS5zZXJ2aWNlcy5ydWRkZXIuVXBncmFkZVJlbGVhc2VSZXF1ZXN0Giwu",
+            "aGFwaS5zZXJ2aWNlcy5ydWRkZXIuVXBncmFkZVJlbGVhc2VSZXNwb25zZSIA",
+            "EmoKDVJlbGVhc2VTdGF0dXMSKi5oYXBpLnNlcnZpY2VzLnJ1ZGRlci5SZWxl",
+            "YXNlU3RhdHVzUmVxdWVzdBorLmhhcGkuc2VydmljZXMucnVkZGVyLlJlbGVh",
+            "c2VTdGF0dXNSZXNwb25zZSIAQghaBnJ1ZGRlcmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Hapi.Release.InfoReflection.Descriptor, global::Hapi.Release.ReleaseReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -80,9 +81,9 @@ namespace Hapi.Services.Rudder {
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.InstallReleaseResponse), global::Hapi.Services.Rudder.InstallReleaseResponse.Parser, new[]{ "Release", "Result" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.DeleteReleaseRequest), global::Hapi.Services.Rudder.DeleteReleaseRequest.Parser, new[]{ "Release" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.DeleteReleaseResponse), global::Hapi.Services.Rudder.DeleteReleaseResponse.Parser, new[]{ "Release", "Result" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.UpgradeReleaseRequest), global::Hapi.Services.Rudder.UpgradeReleaseRequest.Parser, new[]{ "Current", "Target", "Timeout", "Wait", "Recreate", "Force" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.UpgradeReleaseRequest), global::Hapi.Services.Rudder.UpgradeReleaseRequest.Parser, new[]{ "Current", "Target", "Timeout", "Wait", "Recreate", "Force", "CleanupOnFail" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.UpgradeReleaseResponse), global::Hapi.Services.Rudder.UpgradeReleaseResponse.Parser, new[]{ "Release", "Result" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.RollbackReleaseRequest), global::Hapi.Services.Rudder.RollbackReleaseRequest.Parser, new[]{ "Current", "Target", "Timeout", "Wait", "Recreate", "Force" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.RollbackReleaseRequest), global::Hapi.Services.Rudder.RollbackReleaseRequest.Parser, new[]{ "Current", "Target", "Timeout", "Wait", "Recreate", "Force", "CleanupOnFail" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.RollbackReleaseResponse), global::Hapi.Services.Rudder.RollbackReleaseResponse.Parser, new[]{ "Release", "Result" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.ReleaseStatusRequest), global::Hapi.Services.Rudder.ReleaseStatusRequest.Parser, new[]{ "Release" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Rudder.ReleaseStatusResponse), global::Hapi.Services.Rudder.ReleaseStatusResponse.Parser, new[]{ "Release", "Info" }, null, null, null)
@@ -1170,6 +1171,7 @@ namespace Hapi.Services.Rudder {
       wait_ = other.wait_;
       recreate_ = other.recreate_;
       force_ = other.force_;
+      cleanupOnFail_ = other.cleanupOnFail_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1244,6 +1246,17 @@ namespace Hapi.Services.Rudder {
       }
     }
 
+    /// <summary>Field number for the "CleanupOnFail" field.</summary>
+    public const int CleanupOnFailFieldNumber = 7;
+    private bool cleanupOnFail_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool CleanupOnFail {
+      get { return cleanupOnFail_; }
+      set {
+        cleanupOnFail_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UpgradeReleaseRequest);
@@ -1263,6 +1276,7 @@ namespace Hapi.Services.Rudder {
       if (Wait != other.Wait) return false;
       if (Recreate != other.Recreate) return false;
       if (Force != other.Force) return false;
+      if (CleanupOnFail != other.CleanupOnFail) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1275,6 +1289,7 @@ namespace Hapi.Services.Rudder {
       if (Wait != false) hash ^= Wait.GetHashCode();
       if (Recreate != false) hash ^= Recreate.GetHashCode();
       if (Force != false) hash ^= Force.GetHashCode();
+      if (CleanupOnFail != false) hash ^= CleanupOnFail.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1312,6 +1327,10 @@ namespace Hapi.Services.Rudder {
         output.WriteRawTag(48);
         output.WriteBool(Force);
       }
+      if (CleanupOnFail != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(CleanupOnFail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1336,6 +1355,9 @@ namespace Hapi.Services.Rudder {
         size += 1 + 1;
       }
       if (Force != false) {
+        size += 1 + 1;
+      }
+      if (CleanupOnFail != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -1372,6 +1394,9 @@ namespace Hapi.Services.Rudder {
       }
       if (other.Force != false) {
         Force = other.Force;
+      }
+      if (other.CleanupOnFail != false) {
+        CleanupOnFail = other.CleanupOnFail;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1412,6 +1437,10 @@ namespace Hapi.Services.Rudder {
           }
           case 48: {
             Force = input.ReadBool();
+            break;
+          }
+          case 56: {
+            CleanupOnFail = input.ReadBool();
             break;
           }
         }
@@ -1620,6 +1649,7 @@ namespace Hapi.Services.Rudder {
       wait_ = other.wait_;
       recreate_ = other.recreate_;
       force_ = other.force_;
+      cleanupOnFail_ = other.cleanupOnFail_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1694,6 +1724,17 @@ namespace Hapi.Services.Rudder {
       }
     }
 
+    /// <summary>Field number for the "CleanupOnFail" field.</summary>
+    public const int CleanupOnFailFieldNumber = 7;
+    private bool cleanupOnFail_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool CleanupOnFail {
+      get { return cleanupOnFail_; }
+      set {
+        cleanupOnFail_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as RollbackReleaseRequest);
@@ -1713,6 +1754,7 @@ namespace Hapi.Services.Rudder {
       if (Wait != other.Wait) return false;
       if (Recreate != other.Recreate) return false;
       if (Force != other.Force) return false;
+      if (CleanupOnFail != other.CleanupOnFail) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1725,6 +1767,7 @@ namespace Hapi.Services.Rudder {
       if (Wait != false) hash ^= Wait.GetHashCode();
       if (Recreate != false) hash ^= Recreate.GetHashCode();
       if (Force != false) hash ^= Force.GetHashCode();
+      if (CleanupOnFail != false) hash ^= CleanupOnFail.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1762,6 +1805,10 @@ namespace Hapi.Services.Rudder {
         output.WriteRawTag(48);
         output.WriteBool(Force);
       }
+      if (CleanupOnFail != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(CleanupOnFail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1786,6 +1833,9 @@ namespace Hapi.Services.Rudder {
         size += 1 + 1;
       }
       if (Force != false) {
+        size += 1 + 1;
+      }
+      if (CleanupOnFail != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -1822,6 +1872,9 @@ namespace Hapi.Services.Rudder {
       }
       if (other.Force != false) {
         Force = other.Force;
+      }
+      if (other.CleanupOnFail != false) {
+        CleanupOnFail = other.CleanupOnFail;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1862,6 +1915,10 @@ namespace Hapi.Services.Rudder {
           }
           case 48: {
             Force = input.ReadBool();
+            break;
+          }
+          case 56: {
+            CleanupOnFail = input.ReadBool();
             break;
           }
         }

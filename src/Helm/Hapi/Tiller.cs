@@ -34,74 +34,79 @@ namespace Hapi.Services.Tiller {
             "LnNlcnZpY2VzLnRpbGxlci5MaXN0U29ydC5Tb3J0QnkSDgoGZmlsdGVyGAQg",
             "ASgJEjwKCnNvcnRfb3JkZXIYBSABKA4yKC5oYXBpLnNlcnZpY2VzLnRpbGxl",
             "ci5MaXN0U29ydC5Tb3J0T3JkZXISLwoMc3RhdHVzX2NvZGVzGAYgAygOMhku",
-            "aGFwaS5yZWxlYXNlLlN0YXR1cy5Db2RlEhEKCW5hbWVzcGFjZRgHIAEoCSJe",
-            "CghMaXN0U29ydCIyCgZTb3J0QnkSCwoHVU5LTk9XThAAEggKBE5BTUUQARIR",
-            "Cg1MQVNUX1JFTEVBU0VEEAIiHgoJU29ydE9yZGVyEgcKA0FTQxAAEggKBERF",
-            "U0MQASJrChRMaXN0UmVsZWFzZXNSZXNwb25zZRINCgVjb3VudBgBIAEoAxIM",
-            "CgRuZXh0GAIgASgJEg0KBXRvdGFsGAMgASgDEicKCHJlbGVhc2VzGAQgAygL",
-            "MhUuaGFwaS5yZWxlYXNlLlJlbGVhc2UiOAoXR2V0UmVsZWFzZVN0YXR1c1Jl",
-            "cXVlc3QSDAoEbmFtZRgBIAEoCRIPCgd2ZXJzaW9uGAIgASgFIl0KGEdldFJl",
-            "bGVhc2VTdGF0dXNSZXNwb25zZRIMCgRuYW1lGAEgASgJEiAKBGluZm8YAiAB",
-            "KAsyEi5oYXBpLnJlbGVhc2UuSW5mbxIRCgluYW1lc3BhY2UYAyABKAkiOQoY",
-            "R2V0UmVsZWFzZUNvbnRlbnRSZXF1ZXN0EgwKBG5hbWUYASABKAkSDwoHdmVy",
-            "c2lvbhgCIAEoBSJDChlHZXRSZWxlYXNlQ29udGVudFJlc3BvbnNlEiYKB3Jl",
-            "bGVhc2UYASABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZSL+AQoUVXBkYXRl",
-            "UmVsZWFzZVJlcXVlc3QSDAoEbmFtZRgBIAEoCRIgCgVjaGFydBgCIAEoCzIR",
-            "LmhhcGkuY2hhcnQuQ2hhcnQSIgoGdmFsdWVzGAMgASgLMhIuaGFwaS5jaGFy",
-            "dC5Db25maWcSDwoHZHJ5X3J1bhgEIAEoCBIVCg1kaXNhYmxlX2hvb2tzGAUg",
-            "ASgIEhAKCHJlY3JlYXRlGAYgASgIEg8KB3RpbWVvdXQYByABKAMSFAoMcmVz",
-            "ZXRfdmFsdWVzGAggASgIEgwKBHdhaXQYCSABKAgSFAoMcmV1c2VfdmFsdWVz",
-            "GAogASgIEg0KBWZvcmNlGAsgASgIIj8KFVVwZGF0ZVJlbGVhc2VSZXNwb25z",
-            "ZRImCgdyZWxlYXNlGAEgASgLMhUuaGFwaS5yZWxlYXNlLlJlbGVhc2UinwEK",
-            "FlJvbGxiYWNrUmVsZWFzZVJlcXVlc3QSDAoEbmFtZRgBIAEoCRIPCgdkcnlf",
-            "cnVuGAIgASgIEhUKDWRpc2FibGVfaG9va3MYAyABKAgSDwoHdmVyc2lvbhgE",
-            "IAEoBRIQCghyZWNyZWF0ZRgFIAEoCBIPCgd0aW1lb3V0GAYgASgDEgwKBHdh",
-            "aXQYByABKAgSDQoFZm9yY2UYCCABKAgiQQoXUm9sbGJhY2tSZWxlYXNlUmVz",
-            "cG9uc2USJgoHcmVsZWFzZRgBIAEoCzIVLmhhcGkucmVsZWFzZS5SZWxlYXNl",
-            "ItkBChVJbnN0YWxsUmVsZWFzZVJlcXVlc3QSIAoFY2hhcnQYASABKAsyES5o",
-            "YXBpLmNoYXJ0LkNoYXJ0EiIKBnZhbHVlcxgCIAEoCzISLmhhcGkuY2hhcnQu",
-            "Q29uZmlnEg8KB2RyeV9ydW4YAyABKAgSDAoEbmFtZRgEIAEoCRIVCg1kaXNh",
-            "YmxlX2hvb2tzGAUgASgIEhEKCW5hbWVzcGFjZRgGIAEoCRISCgpyZXVzZV9u",
-            "YW1lGAcgASgIEg8KB3RpbWVvdXQYCCABKAMSDAoEd2FpdBgJIAEoCCJAChZJ",
-            "bnN0YWxsUmVsZWFzZVJlc3BvbnNlEiYKB3JlbGVhc2UYASABKAsyFS5oYXBp",
-            "LnJlbGVhc2UuUmVsZWFzZSJeChdVbmluc3RhbGxSZWxlYXNlUmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJEhUKDWRpc2FibGVfaG9va3MYAiABKAgSDQoFcHVyZ2UY",
-            "AyABKAgSDwoHdGltZW91dBgEIAEoAyJQChhVbmluc3RhbGxSZWxlYXNlUmVz",
-            "cG9uc2USJgoHcmVsZWFzZRgBIAEoCzIVLmhhcGkucmVsZWFzZS5SZWxlYXNl",
-            "EgwKBGluZm8YAiABKAkiEwoRR2V0VmVyc2lvblJlcXVlc3QiPAoSR2V0VmVy",
-            "c2lvblJlc3BvbnNlEiYKB1ZlcnNpb24YASABKAsyFS5oYXBpLnZlcnNpb24u",
-            "VmVyc2lvbiIuChFHZXRIaXN0b3J5UmVxdWVzdBIMCgRuYW1lGAEgASgJEgsK",
-            "A21heBgCIAEoBSI9ChJHZXRIaXN0b3J5UmVzcG9uc2USJwoIcmVsZWFzZXMY",
-            "ASADKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZSJEChJUZXN0UmVsZWFzZVJl",
-            "cXVlc3QSDAoEbmFtZRgBIAEoCRIPCgd0aW1lb3V0GAIgASgDEg8KB2NsZWFu",
-            "dXAYAyABKAgiUAoTVGVzdFJlbGVhc2VSZXNwb25zZRILCgNtc2cYASABKAkS",
-            "LAoGc3RhdHVzGAIgASgOMhwuaGFwaS5yZWxlYXNlLlRlc3RSdW4uU3RhdHVz",
-            "MtsICg5SZWxlYXNlU2VydmljZRJpCgxMaXN0UmVsZWFzZXMSKS5oYXBpLnNl",
-            "cnZpY2VzLnRpbGxlci5MaXN0UmVsZWFzZXNSZXF1ZXN0GiouaGFwaS5zZXJ2",
-            "aWNlcy50aWxsZXIuTGlzdFJlbGVhc2VzUmVzcG9uc2UiADABEnMKEEdldFJl",
-            "bGVhc2VTdGF0dXMSLS5oYXBpLnNlcnZpY2VzLnRpbGxlci5HZXRSZWxlYXNl",
-            "U3RhdHVzUmVxdWVzdBouLmhhcGkuc2VydmljZXMudGlsbGVyLkdldFJlbGVh",
-            "c2VTdGF0dXNSZXNwb25zZSIAEnYKEUdldFJlbGVhc2VDb250ZW50Ei4uaGFw",
-            "aS5zZXJ2aWNlcy50aWxsZXIuR2V0UmVsZWFzZUNvbnRlbnRSZXF1ZXN0Gi8u",
-            "aGFwaS5zZXJ2aWNlcy50aWxsZXIuR2V0UmVsZWFzZUNvbnRlbnRSZXNwb25z",
-            "ZSIAEmoKDVVwZGF0ZVJlbGVhc2USKi5oYXBpLnNlcnZpY2VzLnRpbGxlci5V",
-            "cGRhdGVSZWxlYXNlUmVxdWVzdBorLmhhcGkuc2VydmljZXMudGlsbGVyLlVw",
-            "ZGF0ZVJlbGVhc2VSZXNwb25zZSIAEm0KDkluc3RhbGxSZWxlYXNlEisuaGFw",
-            "aS5zZXJ2aWNlcy50aWxsZXIuSW5zdGFsbFJlbGVhc2VSZXF1ZXN0GiwuaGFw",
-            "aS5zZXJ2aWNlcy50aWxsZXIuSW5zdGFsbFJlbGVhc2VSZXNwb25zZSIAEnMK",
-            "EFVuaW5zdGFsbFJlbGVhc2USLS5oYXBpLnNlcnZpY2VzLnRpbGxlci5Vbmlu",
-            "c3RhbGxSZWxlYXNlUmVxdWVzdBouLmhhcGkuc2VydmljZXMudGlsbGVyLlVu",
-            "aW5zdGFsbFJlbGVhc2VSZXNwb25zZSIAEmEKCkdldFZlcnNpb24SJy5oYXBp",
-            "LnNlcnZpY2VzLnRpbGxlci5HZXRWZXJzaW9uUmVxdWVzdBooLmhhcGkuc2Vy",
-            "dmljZXMudGlsbGVyLkdldFZlcnNpb25SZXNwb25zZSIAEnAKD1JvbGxiYWNr",
-            "UmVsZWFzZRIsLmhhcGkuc2VydmljZXMudGlsbGVyLlJvbGxiYWNrUmVsZWFz",
-            "ZVJlcXVlc3QaLS5oYXBpLnNlcnZpY2VzLnRpbGxlci5Sb2xsYmFja1JlbGVh",
-            "c2VSZXNwb25zZSIAEmEKCkdldEhpc3RvcnkSJy5oYXBpLnNlcnZpY2VzLnRp",
-            "bGxlci5HZXRIaXN0b3J5UmVxdWVzdBooLmhhcGkuc2VydmljZXMudGlsbGVy",
-            "LkdldEhpc3RvcnlSZXNwb25zZSIAEmkKDlJ1blJlbGVhc2VUZXN0EiguaGFw",
-            "aS5zZXJ2aWNlcy50aWxsZXIuVGVzdFJlbGVhc2VSZXF1ZXN0GikuaGFwaS5z",
-            "ZXJ2aWNlcy50aWxsZXIuVGVzdFJlbGVhc2VSZXNwb25zZSIAMAFCCloIc2Vy",
-            "dmljZXNiBnByb3RvMw=="));
+            "aGFwaS5yZWxlYXNlLlN0YXR1cy5Db2RlEhEKCW5hbWVzcGFjZRgHIAEoCSJu",
+            "CghMaXN0U29ydCJCCgZTb3J0QnkSCwoHVU5LTk9XThAAEggKBE5BTUUQARIR",
+            "Cg1MQVNUX1JFTEVBU0VEEAISDgoKQ0hBUlRfTkFNRRADIh4KCVNvcnRPcmRl",
+            "chIHCgNBU0MQABIICgRERVNDEAEiawoUTGlzdFJlbGVhc2VzUmVzcG9uc2US",
+            "DQoFY291bnQYASABKAMSDAoEbmV4dBgCIAEoCRINCgV0b3RhbBgDIAEoAxIn",
+            "CghyZWxlYXNlcxgEIAMoCzIVLmhhcGkucmVsZWFzZS5SZWxlYXNlIjgKF0dl",
+            "dFJlbGVhc2VTdGF0dXNSZXF1ZXN0EgwKBG5hbWUYASABKAkSDwoHdmVyc2lv",
+            "bhgCIAEoBSJdChhHZXRSZWxlYXNlU3RhdHVzUmVzcG9uc2USDAoEbmFtZRgB",
+            "IAEoCRIgCgRpbmZvGAIgASgLMhIuaGFwaS5yZWxlYXNlLkluZm8SEQoJbmFt",
+            "ZXNwYWNlGAMgASgJIjkKGEdldFJlbGVhc2VDb250ZW50UmVxdWVzdBIMCgRu",
+            "YW1lGAEgASgJEg8KB3ZlcnNpb24YAiABKAUiQwoZR2V0UmVsZWFzZUNvbnRl",
+            "bnRSZXNwb25zZRImCgdyZWxlYXNlGAEgASgLMhUuaGFwaS5yZWxlYXNlLlJl",
+            "bGVhc2UivgIKFFVwZGF0ZVJlbGVhc2VSZXF1ZXN0EgwKBG5hbWUYASABKAkS",
+            "IAoFY2hhcnQYAiABKAsyES5oYXBpLmNoYXJ0LkNoYXJ0EiIKBnZhbHVlcxgD",
+            "IAEoCzISLmhhcGkuY2hhcnQuQ29uZmlnEg8KB2RyeV9ydW4YBCABKAgSFQoN",
+            "ZGlzYWJsZV9ob29rcxgFIAEoCBIQCghyZWNyZWF0ZRgGIAEoCBIPCgd0aW1l",
+            "b3V0GAcgASgDEhQKDHJlc2V0X3ZhbHVlcxgIIAEoCBIMCgR3YWl0GAkgASgI",
+            "EhQKDHJldXNlX3ZhbHVlcxgKIAEoCBINCgVmb3JjZRgLIAEoCBITCgtkZXNj",
+            "cmlwdGlvbhgMIAEoCRIQCghzdWJOb3RlcxgNIAEoCBIXCg9jbGVhbnVwX29u",
+            "X2ZhaWwYDiABKAgiPwoVVXBkYXRlUmVsZWFzZVJlc3BvbnNlEiYKB3JlbGVh",
+            "c2UYASABKAsyFS5oYXBpLnJlbGVhc2UuUmVsZWFzZSLNAQoWUm9sbGJhY2tS",
+            "ZWxlYXNlUmVxdWVzdBIMCgRuYW1lGAEgASgJEg8KB2RyeV9ydW4YAiABKAgS",
+            "FQoNZGlzYWJsZV9ob29rcxgDIAEoCBIPCgd2ZXJzaW9uGAQgASgFEhAKCHJl",
+            "Y3JlYXRlGAUgASgIEg8KB3RpbWVvdXQYBiABKAMSDAoEd2FpdBgHIAEoCBIN",
+            "CgVmb3JjZRgIIAEoCBITCgtkZXNjcmlwdGlvbhgJIAEoCRIXCg9jbGVhbnVw",
+            "X29uX2ZhaWwYCiABKAgiQQoXUm9sbGJhY2tSZWxlYXNlUmVzcG9uc2USJgoH",
+            "cmVsZWFzZRgBIAEoCzIVLmhhcGkucmVsZWFzZS5SZWxlYXNlIpoCChVJbnN0",
+            "YWxsUmVsZWFzZVJlcXVlc3QSIAoFY2hhcnQYASABKAsyES5oYXBpLmNoYXJ0",
+            "LkNoYXJ0EiIKBnZhbHVlcxgCIAEoCzISLmhhcGkuY2hhcnQuQ29uZmlnEg8K",
+            "B2RyeV9ydW4YAyABKAgSDAoEbmFtZRgEIAEoCRIVCg1kaXNhYmxlX2hvb2tz",
+            "GAUgASgIEhEKCW5hbWVzcGFjZRgGIAEoCRISCgpyZXVzZV9uYW1lGAcgASgI",
+            "Eg8KB3RpbWVvdXQYCCABKAMSDAoEd2FpdBgJIAEoCBIYChBkaXNhYmxlX2Ny",
+            "ZF9ob29rGAogASgIEhMKC2Rlc2NyaXB0aW9uGAsgASgJEhAKCHN1Yk5vdGVz",
+            "GAwgASgIIkAKFkluc3RhbGxSZWxlYXNlUmVzcG9uc2USJgoHcmVsZWFzZRgB",
+            "IAEoCzIVLmhhcGkucmVsZWFzZS5SZWxlYXNlInMKF1VuaW5zdGFsbFJlbGVh",
+            "c2VSZXF1ZXN0EgwKBG5hbWUYASABKAkSFQoNZGlzYWJsZV9ob29rcxgCIAEo",
+            "CBINCgVwdXJnZRgDIAEoCBIPCgd0aW1lb3V0GAQgASgDEhMKC2Rlc2NyaXB0",
+            "aW9uGAUgASgJIlAKGFVuaW5zdGFsbFJlbGVhc2VSZXNwb25zZRImCgdyZWxl",
+            "YXNlGAEgASgLMhUuaGFwaS5yZWxlYXNlLlJlbGVhc2USDAoEaW5mbxgCIAEo",
+            "CSITChFHZXRWZXJzaW9uUmVxdWVzdCI8ChJHZXRWZXJzaW9uUmVzcG9uc2US",
+            "JgoHVmVyc2lvbhgBIAEoCzIVLmhhcGkudmVyc2lvbi5WZXJzaW9uIi4KEUdl",
+            "dEhpc3RvcnlSZXF1ZXN0EgwKBG5hbWUYASABKAkSCwoDbWF4GAIgASgFIj0K",
+            "EkdldEhpc3RvcnlSZXNwb25zZRInCghyZWxlYXNlcxgBIAMoCzIVLmhhcGku",
+            "cmVsZWFzZS5SZWxlYXNlIlYKElRlc3RSZWxlYXNlUmVxdWVzdBIMCgRuYW1l",
+            "GAEgASgJEg8KB3RpbWVvdXQYAiABKAMSDwoHY2xlYW51cBgDIAEoCBIQCghw",
+            "YXJhbGxlbBgEIAEoCCJQChNUZXN0UmVsZWFzZVJlc3BvbnNlEgsKA21zZxgB",
+            "IAEoCRIsCgZzdGF0dXMYAiABKA4yHC5oYXBpLnJlbGVhc2UuVGVzdFJ1bi5T",
+            "dGF0dXMy2wgKDlJlbGVhc2VTZXJ2aWNlEmkKDExpc3RSZWxlYXNlcxIpLmhh",
+            "cGkuc2VydmljZXMudGlsbGVyLkxpc3RSZWxlYXNlc1JlcXVlc3QaKi5oYXBp",
+            "LnNlcnZpY2VzLnRpbGxlci5MaXN0UmVsZWFzZXNSZXNwb25zZSIAMAEScwoQ",
+            "R2V0UmVsZWFzZVN0YXR1cxItLmhhcGkuc2VydmljZXMudGlsbGVyLkdldFJl",
+            "bGVhc2VTdGF0dXNSZXF1ZXN0Gi4uaGFwaS5zZXJ2aWNlcy50aWxsZXIuR2V0",
+            "UmVsZWFzZVN0YXR1c1Jlc3BvbnNlIgASdgoRR2V0UmVsZWFzZUNvbnRlbnQS",
+            "Li5oYXBpLnNlcnZpY2VzLnRpbGxlci5HZXRSZWxlYXNlQ29udGVudFJlcXVl",
+            "c3QaLy5oYXBpLnNlcnZpY2VzLnRpbGxlci5HZXRSZWxlYXNlQ29udGVudFJl",
+            "c3BvbnNlIgASagoNVXBkYXRlUmVsZWFzZRIqLmhhcGkuc2VydmljZXMudGls",
+            "bGVyLlVwZGF0ZVJlbGVhc2VSZXF1ZXN0GisuaGFwaS5zZXJ2aWNlcy50aWxs",
+            "ZXIuVXBkYXRlUmVsZWFzZVJlc3BvbnNlIgASbQoOSW5zdGFsbFJlbGVhc2US",
+            "Ky5oYXBpLnNlcnZpY2VzLnRpbGxlci5JbnN0YWxsUmVsZWFzZVJlcXVlc3Qa",
+            "LC5oYXBpLnNlcnZpY2VzLnRpbGxlci5JbnN0YWxsUmVsZWFzZVJlc3BvbnNl",
+            "IgAScwoQVW5pbnN0YWxsUmVsZWFzZRItLmhhcGkuc2VydmljZXMudGlsbGVy",
+            "LlVuaW5zdGFsbFJlbGVhc2VSZXF1ZXN0Gi4uaGFwaS5zZXJ2aWNlcy50aWxs",
+            "ZXIuVW5pbnN0YWxsUmVsZWFzZVJlc3BvbnNlIgASYQoKR2V0VmVyc2lvbhIn",
+            "LmhhcGkuc2VydmljZXMudGlsbGVyLkdldFZlcnNpb25SZXF1ZXN0GiguaGFw",
+            "aS5zZXJ2aWNlcy50aWxsZXIuR2V0VmVyc2lvblJlc3BvbnNlIgAScAoPUm9s",
+            "bGJhY2tSZWxlYXNlEiwuaGFwaS5zZXJ2aWNlcy50aWxsZXIuUm9sbGJhY2tS",
+            "ZWxlYXNlUmVxdWVzdBotLmhhcGkuc2VydmljZXMudGlsbGVyLlJvbGxiYWNr",
+            "UmVsZWFzZVJlc3BvbnNlIgASYQoKR2V0SGlzdG9yeRInLmhhcGkuc2Vydmlj",
+            "ZXMudGlsbGVyLkdldEhpc3RvcnlSZXF1ZXN0GiguaGFwaS5zZXJ2aWNlcy50",
+            "aWxsZXIuR2V0SGlzdG9yeVJlc3BvbnNlIgASaQoOUnVuUmVsZWFzZVRlc3QS",
+            "KC5oYXBpLnNlcnZpY2VzLnRpbGxlci5UZXN0UmVsZWFzZVJlcXVlc3QaKS5o",
+            "YXBpLnNlcnZpY2VzLnRpbGxlci5UZXN0UmVsZWFzZVJlc3BvbnNlIgAwAUIK",
+            "WghzZXJ2aWNlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Hapi.Chart.ChartReflection.Descriptor, global::Hapi.Chart.ConfigReflection.Descriptor, global::Hapi.Release.ReleaseReflection.Descriptor, global::Hapi.Release.InfoReflection.Descriptor, global::Hapi.Release.TestRunReflection.Descriptor, global::Hapi.Release.StatusReflection.Descriptor, global::Hapi.Version.VersionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -112,19 +117,19 @@ namespace Hapi.Services.Tiller {
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetReleaseStatusResponse), global::Hapi.Services.Tiller.GetReleaseStatusResponse.Parser, new[]{ "Name", "Info", "Namespace" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetReleaseContentRequest), global::Hapi.Services.Tiller.GetReleaseContentRequest.Parser, new[]{ "Name", "Version" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetReleaseContentResponse), global::Hapi.Services.Tiller.GetReleaseContentResponse.Parser, new[]{ "Release" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.UpdateReleaseRequest), global::Hapi.Services.Tiller.UpdateReleaseRequest.Parser, new[]{ "Name", "Chart", "Values", "DryRun", "DisableHooks", "Recreate", "Timeout", "ResetValues", "Wait", "ReuseValues", "Force" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.UpdateReleaseRequest), global::Hapi.Services.Tiller.UpdateReleaseRequest.Parser, new[]{ "Name", "Chart", "Values", "DryRun", "DisableHooks", "Recreate", "Timeout", "ResetValues", "Wait", "ReuseValues", "Force", "Description", "SubNotes", "CleanupOnFail" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.UpdateReleaseResponse), global::Hapi.Services.Tiller.UpdateReleaseResponse.Parser, new[]{ "Release" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.RollbackReleaseRequest), global::Hapi.Services.Tiller.RollbackReleaseRequest.Parser, new[]{ "Name", "DryRun", "DisableHooks", "Version", "Recreate", "Timeout", "Wait", "Force" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.RollbackReleaseRequest), global::Hapi.Services.Tiller.RollbackReleaseRequest.Parser, new[]{ "Name", "DryRun", "DisableHooks", "Version", "Recreate", "Timeout", "Wait", "Force", "Description", "CleanupOnFail" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.RollbackReleaseResponse), global::Hapi.Services.Tiller.RollbackReleaseResponse.Parser, new[]{ "Release" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.InstallReleaseRequest), global::Hapi.Services.Tiller.InstallReleaseRequest.Parser, new[]{ "Chart", "Values", "DryRun", "Name", "DisableHooks", "Namespace", "ReuseName", "Timeout", "Wait" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.InstallReleaseRequest), global::Hapi.Services.Tiller.InstallReleaseRequest.Parser, new[]{ "Chart", "Values", "DryRun", "Name", "DisableHooks", "Namespace", "ReuseName", "Timeout", "Wait", "DisableCrdHook", "Description", "SubNotes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.InstallReleaseResponse), global::Hapi.Services.Tiller.InstallReleaseResponse.Parser, new[]{ "Release" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.UninstallReleaseRequest), global::Hapi.Services.Tiller.UninstallReleaseRequest.Parser, new[]{ "Name", "DisableHooks", "Purge", "Timeout" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.UninstallReleaseRequest), global::Hapi.Services.Tiller.UninstallReleaseRequest.Parser, new[]{ "Name", "DisableHooks", "Purge", "Timeout", "Description" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.UninstallReleaseResponse), global::Hapi.Services.Tiller.UninstallReleaseResponse.Parser, new[]{ "Release", "Info" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetVersionRequest), global::Hapi.Services.Tiller.GetVersionRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetVersionResponse), global::Hapi.Services.Tiller.GetVersionResponse.Parser, new[]{ "Version" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetHistoryRequest), global::Hapi.Services.Tiller.GetHistoryRequest.Parser, new[]{ "Name", "Max" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.GetHistoryResponse), global::Hapi.Services.Tiller.GetHistoryResponse.Parser, new[]{ "Releases" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.TestReleaseRequest), global::Hapi.Services.Tiller.TestReleaseRequest.Parser, new[]{ "Name", "Timeout", "Cleanup" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.TestReleaseRequest), global::Hapi.Services.Tiller.TestReleaseRequest.Parser, new[]{ "Name", "Timeout", "Cleanup", "Parallel" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Hapi.Services.Tiller.TestReleaseResponse), global::Hapi.Services.Tiller.TestReleaseResponse.Parser, new[]{ "Msg", "Status" }, null, null, null)
           }));
     }
@@ -137,7 +142,7 @@ namespace Hapi.Services.Tiller {
   ///
   /// Releases can be retrieved in chunks by setting limit and offset.
   ///
-  /// Releases can be sorted according to a few pre-determined sort stategies.
+  /// Releases can be sorted according to a few pre-determined sort strategies.
   /// </summary>
   public sealed partial class ListReleasesRequest : pb::IMessage<ListReleasesRequest> {
     private static readonly pb::MessageParser<ListReleasesRequest> _parser = new pb::MessageParser<ListReleasesRequest>(() => new ListReleasesRequest());
@@ -566,6 +571,7 @@ namespace Hapi.Services.Tiller {
         [pbr::OriginalName("UNKNOWN")] Unknown = 0,
         [pbr::OriginalName("NAME")] Name = 1,
         [pbr::OriginalName("LAST_RELEASED")] LastReleased = 2,
+        [pbr::OriginalName("CHART_NAME")] ChartName = 3,
       }
 
       /// <summary>
@@ -1039,7 +1045,7 @@ namespace Hapi.Services.Tiller {
     public const int NamespaceFieldNumber = 3;
     private string namespace_ = "";
     /// <summary>
-    /// Namesapce the release was released into
+    /// Namespace the release was released into
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Namespace {
@@ -1517,6 +1523,9 @@ namespace Hapi.Services.Tiller {
       wait_ = other.wait_;
       reuseValues_ = other.reuseValues_;
       force_ = other.force_;
+      description_ = other.description_;
+      subNotes_ = other.subNotes_;
+      cleanupOnFail_ = other.cleanupOnFail_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1681,6 +1690,48 @@ namespace Hapi.Services.Tiller {
       }
     }
 
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 12;
+    private string description_ = "";
+    /// <summary>
+    /// Description, if set, will set the description for the updated release
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "subNotes" field.</summary>
+    public const int SubNotesFieldNumber = 13;
+    private bool subNotes_;
+    /// <summary>
+    /// Render subchart notes if enabled
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool SubNotes {
+      get { return subNotes_; }
+      set {
+        subNotes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cleanup_on_fail" field.</summary>
+    public const int CleanupOnFailFieldNumber = 14;
+    private bool cleanupOnFail_;
+    /// <summary>
+    /// Allow deletion of new resources created in this update when update failed
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool CleanupOnFail {
+      get { return cleanupOnFail_; }
+      set {
+        cleanupOnFail_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UpdateReleaseRequest);
@@ -1705,6 +1756,9 @@ namespace Hapi.Services.Tiller {
       if (Wait != other.Wait) return false;
       if (ReuseValues != other.ReuseValues) return false;
       if (Force != other.Force) return false;
+      if (Description != other.Description) return false;
+      if (SubNotes != other.SubNotes) return false;
+      if (CleanupOnFail != other.CleanupOnFail) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1722,6 +1776,9 @@ namespace Hapi.Services.Tiller {
       if (Wait != false) hash ^= Wait.GetHashCode();
       if (ReuseValues != false) hash ^= ReuseValues.GetHashCode();
       if (Force != false) hash ^= Force.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (SubNotes != false) hash ^= SubNotes.GetHashCode();
+      if (CleanupOnFail != false) hash ^= CleanupOnFail.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1779,6 +1836,18 @@ namespace Hapi.Services.Tiller {
         output.WriteRawTag(88);
         output.WriteBool(Force);
       }
+      if (Description.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Description);
+      }
+      if (SubNotes != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(SubNotes);
+      }
+      if (CleanupOnFail != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(CleanupOnFail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1818,6 +1887,15 @@ namespace Hapi.Services.Tiller {
         size += 1 + 1;
       }
       if (Force != false) {
+        size += 1 + 1;
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (SubNotes != false) {
+        size += 1 + 1;
+      }
+      if (CleanupOnFail != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -1869,6 +1947,15 @@ namespace Hapi.Services.Tiller {
       }
       if (other.Force != false) {
         Force = other.Force;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.SubNotes != false) {
+        SubNotes = other.SubNotes;
+      }
+      if (other.CleanupOnFail != false) {
+        CleanupOnFail = other.CleanupOnFail;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1929,6 +2016,18 @@ namespace Hapi.Services.Tiller {
           }
           case 88: {
             Force = input.ReadBool();
+            break;
+          }
+          case 98: {
+            Description = input.ReadString();
+            break;
+          }
+          case 104: {
+            SubNotes = input.ReadBool();
+            break;
+          }
+          case 112: {
+            CleanupOnFail = input.ReadBool();
             break;
           }
         }
@@ -2108,6 +2207,8 @@ namespace Hapi.Services.Tiller {
       timeout_ = other.timeout_;
       wait_ = other.wait_;
       force_ = other.force_;
+      description_ = other.description_;
+      cleanupOnFail_ = other.cleanupOnFail_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2229,6 +2330,34 @@ namespace Hapi.Services.Tiller {
       }
     }
 
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 9;
+    private string description_ = "";
+    /// <summary>
+    /// Description, if set, will set the description for the rollback
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "cleanup_on_fail" field.</summary>
+    public const int CleanupOnFailFieldNumber = 10;
+    private bool cleanupOnFail_;
+    /// <summary>
+    /// Allow deletion of new resources created in this rollback when rollback failed
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool CleanupOnFail {
+      get { return cleanupOnFail_; }
+      set {
+        cleanupOnFail_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as RollbackReleaseRequest);
@@ -2250,6 +2379,8 @@ namespace Hapi.Services.Tiller {
       if (Timeout != other.Timeout) return false;
       if (Wait != other.Wait) return false;
       if (Force != other.Force) return false;
+      if (Description != other.Description) return false;
+      if (CleanupOnFail != other.CleanupOnFail) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2264,6 +2395,8 @@ namespace Hapi.Services.Tiller {
       if (Timeout != 0L) hash ^= Timeout.GetHashCode();
       if (Wait != false) hash ^= Wait.GetHashCode();
       if (Force != false) hash ^= Force.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (CleanupOnFail != false) hash ^= CleanupOnFail.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2309,6 +2442,14 @@ namespace Hapi.Services.Tiller {
         output.WriteRawTag(64);
         output.WriteBool(Force);
       }
+      if (Description.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(Description);
+      }
+      if (CleanupOnFail != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(CleanupOnFail);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2339,6 +2480,12 @@ namespace Hapi.Services.Tiller {
         size += 1 + 1;
       }
       if (Force != false) {
+        size += 1 + 1;
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (CleanupOnFail != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -2375,6 +2522,12 @@ namespace Hapi.Services.Tiller {
       }
       if (other.Force != false) {
         Force = other.Force;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.CleanupOnFail != false) {
+        CleanupOnFail = other.CleanupOnFail;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2417,6 +2570,14 @@ namespace Hapi.Services.Tiller {
           }
           case 64: {
             Force = input.ReadBool();
+            break;
+          }
+          case 74: {
+            Description = input.ReadString();
+            break;
+          }
+          case 80: {
+            CleanupOnFail = input.ReadBool();
             break;
           }
         }
@@ -2600,6 +2761,9 @@ namespace Hapi.Services.Tiller {
       reuseName_ = other.reuseName_;
       timeout_ = other.timeout_;
       wait_ = other.wait_;
+      disableCrdHook_ = other.disableCrdHook_;
+      description_ = other.description_;
+      subNotes_ = other.subNotes_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2686,7 +2850,7 @@ namespace Hapi.Services.Tiller {
     public const int NamespaceFieldNumber = 6;
     private string namespace_ = "";
     /// <summary>
-    /// Namepace is the kubernetes namespace of the release.
+    /// Namespace is the kubernetes namespace of the release.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Namespace {
@@ -2700,7 +2864,7 @@ namespace Hapi.Services.Tiller {
     public const int ReuseNameFieldNumber = 7;
     private bool reuseName_;
     /// <summary>
-    /// ReuseName requests that Tiller re-uses a name, instead of erroring out.
+    /// Reuse_name requests that Tiller re-uses a name, instead of erroring out.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool ReuseName {
@@ -2739,6 +2903,42 @@ namespace Hapi.Services.Tiller {
       }
     }
 
+    /// <summary>Field number for the "disable_crd_hook" field.</summary>
+    public const int DisableCrdHookFieldNumber = 10;
+    private bool disableCrdHook_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool DisableCrdHook {
+      get { return disableCrdHook_; }
+      set {
+        disableCrdHook_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 11;
+    private string description_ = "";
+    /// <summary>
+    /// Description, if set, will set the description for the installed release
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "subNotes" field.</summary>
+    public const int SubNotesFieldNumber = 12;
+    private bool subNotes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool SubNotes {
+      get { return subNotes_; }
+      set {
+        subNotes_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as InstallReleaseRequest);
@@ -2761,6 +2961,9 @@ namespace Hapi.Services.Tiller {
       if (ReuseName != other.ReuseName) return false;
       if (Timeout != other.Timeout) return false;
       if (Wait != other.Wait) return false;
+      if (DisableCrdHook != other.DisableCrdHook) return false;
+      if (Description != other.Description) return false;
+      if (SubNotes != other.SubNotes) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2776,6 +2979,9 @@ namespace Hapi.Services.Tiller {
       if (ReuseName != false) hash ^= ReuseName.GetHashCode();
       if (Timeout != 0L) hash ^= Timeout.GetHashCode();
       if (Wait != false) hash ^= Wait.GetHashCode();
+      if (DisableCrdHook != false) hash ^= DisableCrdHook.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (SubNotes != false) hash ^= SubNotes.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2825,6 +3031,18 @@ namespace Hapi.Services.Tiller {
         output.WriteRawTag(72);
         output.WriteBool(Wait);
       }
+      if (DisableCrdHook != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(DisableCrdHook);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(Description);
+      }
+      if (SubNotes != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(SubNotes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2858,6 +3076,15 @@ namespace Hapi.Services.Tiller {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Timeout);
       }
       if (Wait != false) {
+        size += 1 + 1;
+      }
+      if (DisableCrdHook != false) {
+        size += 1 + 1;
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (SubNotes != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -2903,6 +3130,15 @@ namespace Hapi.Services.Tiller {
       }
       if (other.Wait != false) {
         Wait = other.Wait;
+      }
+      if (other.DisableCrdHook != false) {
+        DisableCrdHook = other.DisableCrdHook;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.SubNotes != false) {
+        SubNotes = other.SubNotes;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2955,6 +3191,18 @@ namespace Hapi.Services.Tiller {
           }
           case 72: {
             Wait = input.ReadBool();
+            break;
+          }
+          case 80: {
+            DisableCrdHook = input.ReadBool();
+            break;
+          }
+          case 90: {
+            Description = input.ReadString();
+            break;
+          }
+          case 96: {
+            SubNotes = input.ReadBool();
             break;
           }
         }
@@ -3133,6 +3381,7 @@ namespace Hapi.Services.Tiller {
       disableHooks_ = other.disableHooks_;
       purge_ = other.purge_;
       timeout_ = other.timeout_;
+      description_ = other.description_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3197,6 +3446,20 @@ namespace Hapi.Services.Tiller {
       }
     }
 
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 5;
+    private string description_ = "";
+    /// <summary>
+    /// Description, if set, will set the description for the uninstalled release
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UninstallReleaseRequest);
@@ -3214,6 +3477,7 @@ namespace Hapi.Services.Tiller {
       if (DisableHooks != other.DisableHooks) return false;
       if (Purge != other.Purge) return false;
       if (Timeout != other.Timeout) return false;
+      if (Description != other.Description) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3224,6 +3488,7 @@ namespace Hapi.Services.Tiller {
       if (DisableHooks != false) hash ^= DisableHooks.GetHashCode();
       if (Purge != false) hash ^= Purge.GetHashCode();
       if (Timeout != 0L) hash ^= Timeout.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3253,6 +3518,10 @@ namespace Hapi.Services.Tiller {
         output.WriteRawTag(32);
         output.WriteInt64(Timeout);
       }
+      if (Description.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Description);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3272,6 +3541,9 @@ namespace Hapi.Services.Tiller {
       }
       if (Timeout != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Timeout);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3295,6 +3567,9 @@ namespace Hapi.Services.Tiller {
       }
       if (other.Timeout != 0L) {
         Timeout = other.Timeout;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3321,6 +3596,10 @@ namespace Hapi.Services.Tiller {
           }
           case 32: {
             Timeout = input.ReadInt64();
+            break;
+          }
+          case 42: {
+            Description = input.ReadString();
             break;
           }
         }
@@ -4061,6 +4340,7 @@ namespace Hapi.Services.Tiller {
       name_ = other.name_;
       timeout_ = other.timeout_;
       cleanup_ = other.cleanup_;
+      parallel_ = other.parallel_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4111,6 +4391,20 @@ namespace Hapi.Services.Tiller {
       }
     }
 
+    /// <summary>Field number for the "parallel" field.</summary>
+    public const int ParallelFieldNumber = 4;
+    private bool parallel_;
+    /// <summary>
+    /// parallel specifies whether or not to run test pods in parallel
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Parallel {
+      get { return parallel_; }
+      set {
+        parallel_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as TestReleaseRequest);
@@ -4127,6 +4421,7 @@ namespace Hapi.Services.Tiller {
       if (Name != other.Name) return false;
       if (Timeout != other.Timeout) return false;
       if (Cleanup != other.Cleanup) return false;
+      if (Parallel != other.Parallel) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4136,6 +4431,7 @@ namespace Hapi.Services.Tiller {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Timeout != 0L) hash ^= Timeout.GetHashCode();
       if (Cleanup != false) hash ^= Cleanup.GetHashCode();
+      if (Parallel != false) hash ^= Parallel.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4161,6 +4457,10 @@ namespace Hapi.Services.Tiller {
         output.WriteRawTag(24);
         output.WriteBool(Cleanup);
       }
+      if (Parallel != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(Parallel);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4176,6 +4476,9 @@ namespace Hapi.Services.Tiller {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Timeout);
       }
       if (Cleanup != false) {
+        size += 1 + 1;
+      }
+      if (Parallel != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -4198,6 +4501,9 @@ namespace Hapi.Services.Tiller {
       if (other.Cleanup != false) {
         Cleanup = other.Cleanup;
       }
+      if (other.Parallel != false) {
+        Parallel = other.Parallel;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -4219,6 +4525,10 @@ namespace Hapi.Services.Tiller {
           }
           case 24: {
             Cleanup = input.ReadBool();
+            break;
+          }
+          case 32: {
+            Parallel = input.ReadBool();
             break;
           }
         }
