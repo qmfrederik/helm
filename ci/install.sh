@@ -24,14 +24,14 @@ chmod +x minikube
 sudo mv minikube /usr/local/bin/
 
 # Install Helm
-curl -sL https://kubernetes-helm.storage.googleapis.com/helm-v2.8.1-linux-amd64.tar.gz -o helm-v2.8.1-linux-amd64.tar.gz
+curl -sL https://kubernetes-helm.storage.googleapis.com/helm-v2.14.1-linux-amd64.tar.gz -o helm-v2.14.1-linux-amd64.tar.gz
 mkdir ~/helm
-tar xf helm-v2.8.1-linux-amd64.tar.gz -C ~/helm/
+tar xf helm-v2.14.1-linux-amd64.tar.gz -C ~/helm/
 sudo mv ~/helm/linux-amd64/helm /usr/local/bin/helm
 rm -rf ~/helm
 
 # Create the minikube cluster
-sudo minikube start --vm-driver=none --kubernetes-version=v1.9.0 --extra-config=apiserver.Authorization.Mode=RBAC
+sudo minikube start --vm-driver=none --kubernetes-version=v1.15.0 --extra-config=apiserver.Authorization.Mode=RBAC
 minikube update-context
 
 # Disable the dashboard. We don't use it and it consumes a lot of resources
