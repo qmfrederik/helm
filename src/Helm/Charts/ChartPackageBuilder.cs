@@ -13,7 +13,7 @@ namespace Helm.Charts
 {
     public class ChartPackageBuilder
     {
-        private readonly Serializer serializer = new SerializerBuilder()
+        private readonly ISerializer serializer = new SerializerBuilder()
             .WithNamingConvention(new CamelCaseNamingConvention())
             .Build();
 
