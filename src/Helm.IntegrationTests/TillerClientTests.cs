@@ -16,7 +16,7 @@ namespace Helm.IntegrationTests
 
         public TillerClientTests(ITestOutputHelper testOutputHelper)
         {
-            _testOutputHelper = testOutputHelper;
+            _testOutputHelper = new ConsoleOutputHelper();
         }
 
         [Fact]

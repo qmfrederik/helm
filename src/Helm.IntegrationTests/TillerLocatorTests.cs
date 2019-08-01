@@ -1,4 +1,5 @@
-﻿using Helm.Helm;
+﻿using System;
+using Helm.Helm;
 using k8s;
 using System.Threading.Tasks;
 using Xunit;
@@ -6,13 +7,26 @@ using Xunit.Abstractions;
 
 namespace Helm.IntegrationTests
 {
+    public class ConsoleOutputHelper : ITestOutputHelper
+    {
+        public void WriteLine(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public void WriteLine(string format, params object[] args)
+        {
+            Console.WriteLine(format, args);
+        }
+    }
+
     public class TillerLocatorTests
     {
         private readonly ITestOutputHelper _testOutputHelper;
 
         public TillerLocatorTests(ITestOutputHelper testOutputHelper)
         {
-            _testOutputHelper = testOutputHelper;
+            _testOutputHelper = new ConsoleOutputHelper();
         }
 
         [Fact]
