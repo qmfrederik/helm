@@ -22,4 +22,4 @@ script:
 - dotnet pack --no-restore -c Release
 - dotnet test Helm.Tests
 - cat $KUBECONFIG
-- dotnet test -v d Helm.IntegrationTests
+- dotnet test -v normal Helm.IntegrationTests
