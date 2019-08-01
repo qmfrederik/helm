@@ -9,7 +9,7 @@ sudo apt-get update
 sudo apt-get install -y dotnet-sdk-2.2
 
 # Install PowerShell
-curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list > /dev/null
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list > /dev/null
 sudo apt-get update
 sudo apt-get install -y powershell 
 
