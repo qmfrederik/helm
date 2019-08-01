@@ -35,6 +35,8 @@ namespace Helm.IntegrationTests
             _testOutputHelper.WriteLine("Trying to locate Tiller endpoint");
 
             Kubernetes kubernetes = new Kubernetes(TestConfiguration.Configure());
+            var nodes = await kubernetes.ListNodeAsync();
+            _testOutputHelper.WriteLine($"{nodes.Items.Count} found");
 
             TillerLocator locator = new TillerLocator(kubernetes);
             var endPoint = await locator.Locate().ConfigureAwait(false);
