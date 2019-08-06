@@ -15,7 +15,7 @@ namespace Helm.Charts
     public class ChartPackage
     {
         private readonly Stream stream;
-        private readonly Deserializer deserializer = new Deserializer(namingConvention: new CamelCaseNamingConvention(), ignoreUnmatched: true);
+        private readonly IDeserializer deserializer;
         private readonly Collection<string> entryNames = new Collection<string>();
         private readonly string directoryName;
 
@@ -24,6 +24,11 @@ namespace Helm.Charts
 
         private ChartPackage(Stream stream)
         {
+            this.deserializer = new DeserializerBuilder()
+                .WithNamingConvention(new CamelCaseNamingConvention())
+                .IgnoreUnmatchedProperties()
+                .Build();
+
             this.stream = stream ?? throw new ArgumentNullException(nameof(stream));
 
             if (!this.stream.CanSeek || !this.stream.CanRead)
