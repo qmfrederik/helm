@@ -23,11 +23,11 @@ namespace Helm.Helm
             this.client = new ReleaseServiceClient(new Channel(target, ChannelCredentials.Insecure));
         }
 
-        public TillerClient(Channel channel) 
+        public TillerClient(Channel channel)
         {
-            this.client = new ReleaseServiceClient(channel); 
-        } 
-        
+            this.client = new ReleaseServiceClient(channel);
+        }
+
         public TillerClient(CallInvoker callInvoker)
         {
             this.client = new ReleaseServiceClient(callInvoker);

@@ -16,7 +16,7 @@ namespace Helm.IntegrationTests
         {
             if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("KUBECONFIG")))
             {
-                return KubernetesClientConfiguration.BuildConfigFromConfigFile((string)null, Environment.GetEnvironmentVariable("KUBECONFIG"));
+                return KubernetesClientConfiguration.BuildConfigFromConfigFile();
             }
             if (File.Exists("minikube.config"))
             {
