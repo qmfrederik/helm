@@ -16,6 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\PublishProfiles\**" />
+    <EmbeddedResource Remove="Properties\PublishProfiles\**" />
+    <None Remove="Properties\PublishProfiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.5.1" />
     <PackageReference Include="Google.Protobuf.Tools" Version="3.5.1">
       <PrivateAssets>all</PrivateAssets>
@@ -38,6 +44,7 @@
 
   <ItemGroup>
     <Folder Include="Hapi\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
